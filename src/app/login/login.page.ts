@@ -4,8 +4,10 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonItem,
 } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+  import { IonInput } from '@ionic/angular/standalone';
+  import { IonButton } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-tab1',
@@ -15,9 +17,11 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
   imports: [
     IonHeader,
     IonToolbar,
+    IonInput,
     IonTitle,
+    IonItem,
     IonContent,
-    ExploreContainerComponent,
+    IonButton,
   ],
 })
 export class LoginPage {
