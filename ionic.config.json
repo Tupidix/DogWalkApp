@@ -1,0 +1,7 @@
+{
+  "name": "DogWalkApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
