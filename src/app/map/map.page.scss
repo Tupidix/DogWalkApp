@@ -1,0 +1,13 @@
+#map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.square {
+  display: flex;
+  width: 500px;
+  height: 100px;
+  border-radius: 20px;
+}
