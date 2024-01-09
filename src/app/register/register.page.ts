@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
+import { IonIcon} from '@ionic/angular/standalone';
+import { IonButton} from '@ionic/angular/standalone';
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
-} from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+  IonItem
+} from '@ionic/angular/standalone'
+import { IonInput } from '@ionic/angular/standalone';;
+
 
 @Component({
   selector: 'app-tab1',
@@ -17,7 +21,10 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
     IonToolbar,
     IonTitle,
     IonContent,
-    ExploreContainerComponent,
+    IonIcon,
+    IonButton,
+    IonInput,
+    IonItem,
   ],
 })
 export class RegisterPage {

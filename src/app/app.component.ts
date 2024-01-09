@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import {addIcons} from 'ionicons'
-import {navigateCircleOutline,  personOutline, pawOutline} from 'ionicons/icons'
+import {navigateCircleOutline,  personOutline, pawOutline, arrowBackOutline} from 'ionicons/icons'
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,6 @@ import {navigateCircleOutline,  personOutline, pawOutline} from 'ionicons/icons'
 })
 export class AppComponent {
   constructor() {
-    addIcons({navigateCircleOutline, personOutline, pawOutline})
+    addIcons({navigateCircleOutline, personOutline, pawOutline, arrowBackOutline})
   }
 }
