@@ -15,11 +15,11 @@
   <div id="contenuPage">
   <h1>DogWalk</h1>
   <ion-item>
-    <ion-input label="email" type="email" placeholder="johndoe@gmail.com"></ion-input>
-    <ion-input label="Password" type="password" placeholder="password"></ion-input>
+    <ion-input label="email" type="email" placeholder="johndoe@gmail.com" [(ngModel)]="email"></ion-input>
+    <ion-input label="Password" type="password" placeholder="password" [(ngModel)]="password"></ion-input>
   </ion-item>
   <div id="bouttons">
-    <ion-button>SIGN IN</ion-button>
+    <ion-button (click)="signIn()">SIGN IN</ion-button>
     <br/>
     <ion-button href="/register" color="light">REGISTER</ion-button>
   </div>
