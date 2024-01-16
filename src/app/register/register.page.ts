@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
-import { IonIcon} from '@ionic/angular/standalone';
-import { IonButton} from '@ionic/angular/standalone';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
-  IonItem
-} from '@ionic/angular/standalone'
-import { IonInput } from '@ionic/angular/standalone';;
+  IonItem,
+  IonInput,
+  IonButton,
+  IonIcon,
+  IonButtons,
+} from '@ionic/angular/standalone';
+
+// Logout
+import { AuthService } from "src/app/security/auth.service";
 
 
 @Component({
@@ -25,8 +30,24 @@ import { IonInput } from '@ionic/angular/standalone';;
     IonButton,
     IonInput,
     IonItem,
+    IonButtons
   ],
 })
-export class RegisterPage {
-  constructor() {}
+
+export class RegisterPage implements OnInit {
+  constructor(
+    // Inject the authentication provider.
+    private auth: AuthService,
+    // Inject the router
+    private router: Router
+  ) {}
+
+  ngOnInit() {}
+
+  // Add a method to log out.
+  logOut() {
+    console.log("logging out...");
+    this.auth.logOut();
+    this.router.navigateByUrl("/login");
+  }
 }

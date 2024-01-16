@@ -1,12 +1,11 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs/tabs.page';
-import { MapPage } from './maps/maps.page';
+import { onlyAuthenticated } from "./security/only-authenticated.guard";
 
 export const routes: Routes = [
   {
     path: 'login',
-    // Go to the login.page
-    loadComponent: () => import('./login/login.page').then((m) => m.LoginPage),
+    loadComponent: () => import('./security/login/login.page').then( m => m.LoginPage)
   },
   {
     path: 'register',
@@ -17,6 +16,7 @@ export const routes: Routes = [
   {
     path: '',
     component: TabsPage,
+    canActivate: [onlyAuthenticated],
     children: [
       {
         path: 'maps',
