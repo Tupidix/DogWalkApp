@@ -3,16 +3,17 @@ h1 {
     font-size: 70px;
 }
 
+ion-toolbar {
+    text-align: center;
+}
+
 #bouttons {
     text-align: center;
 }
 
 ion-button {
     margin-top: 35px;
-}
-
-ion-item {
-    width: 260px;
+    height:2.5rem;
 }
 
 #contenuPage{

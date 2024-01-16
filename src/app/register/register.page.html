@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Register
+      DogWalk
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,14 +13,18 @@
     </ion-toolbar>
   </ion-header>
   <a href="/login">
-    <ion-icon name="arrow-back-outline"></ion-icon>
+    <ion-icon name="arrow-back-outline" id="back"></ion-icon>
   </a>
+  <div id="contenuPage">
   <ion-item>
     <ion-input label="First name" placeholder="John"></ion-input>
     <ion-input label="Last name" placeholder="Doe"></ion-input>
     <ion-input label="email" type="email" placeholder="johndoe@gmail.com"></ion-input>
     <ion-input label="Password" type="password" placeholder="password"></ion-input>
-    <ion-input label="Birthdate" type="date" placeholder="password"></ion-input>
+    <ion-input label="Birthdate" type="date" placeholder="06/02/2000"></ion-input>
   </ion-item>
+  <div id="bouttons">
   <ion-button>CREATE ACCOUNT</ion-button>
+  </div>
+</div>
 </ion-content>
