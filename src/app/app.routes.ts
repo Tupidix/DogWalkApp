@@ -1,13 +1,8 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs/tabs.page';
+import { MapPage } from './maps/maps.page';
 
 export const routes: Routes = [
-  {
-    path: '',
-    // Go to the login.page
-    redirectTo: '/login',
-    pathMatch: 'full',
-  },
   {
     path: 'login',
     // Go to the login.page
@@ -21,12 +16,42 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: TabsPage, // Permet d'afficher le menu qui est dans le dossier tabs
+    component: TabsPage,
     children: [
       {
-        path: 'map',
-        // Go to the map.page
-        loadComponent: () => import('./map/map.page').then((m) => m.MapPage),
+        path: 'maps',
+        loadComponent: () => import('./maps/maps.page').then((m) => m.MapPage),
+        children: [
+          {
+            path: 'walkers',
+            // Go to the map.page
+            loadComponent: () =>
+              import('./maps/walkers/walkers.page').then((m) => m.WalkersPage),
+          },
+          {
+            path: 'walks', // Servira de base pour afficher la carte
+            // Go to the walks.page qui aura la carte en haut avec différentes walks
+            loadComponent: () =>
+              import('./maps/walks/walks.page').then((m) => m.WalksPage),
+            children: [
+              {
+                // Walks servira àa afficher la liste des walks au dessous de la carte présente dans le niveau au-dessus
+                path: '',
+                // loadComponent: () => // Liste des walks et bouton créer un walk
+              },
+              {
+                // Servira à afficher le détail d'un walk au dessous de la carte présente dans le niveau au-dessus
+                path: ':walkId',
+                // loadComponent: () => // Détail d'un walk
+              },
+            ],
+          },
+          {
+            path: '',
+            redirectTo: 'walkers',
+            pathMatch: 'full',
+          },
+        ],
       },
       {
         path: 'profile',
@@ -38,6 +63,11 @@ export const routes: Routes = [
         path: 'dogs',
         // Go to the dogs.page
         loadComponent: () => import('./dogs/dogs.page').then((m) => m.DogsPage),
+      },
+      {
+        path: '',
+        redirectTo: '/maps',
+        pathMatch: 'full',
       },
     ],
   },

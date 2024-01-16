@@ -11,17 +11,19 @@ import {
   IonListHeader,
   IonList,
   IonButton,
+  IonRouterOutlet,
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 
 // Carte
 import { AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
-  templateUrl: 'map.page.html',
-  styleUrls: ['map.page.scss'],
+  templateUrl: 'maps.page.html',
+  styleUrls: ['maps.page.scss'],
   standalone: true,
   imports: [
     IonHeader,
@@ -36,6 +38,8 @@ import * as L from 'leaflet';
     IonListHeader,
     IonList,
     IonButton,
+    RouterModule,
+    IonRouterOutlet,
   ],
 })
 // export class MapPage implements AfterViewInit {
@@ -53,5 +57,6 @@ export class MapPage {
   //     map
   //   );
 
-  // Ajoute des marqueurs, lignes, ou autres éléments à la carte si nécessaire
-} //}
+  //   // Ajoute des marqueurs, lignes, ou autres éléments à la carte si nécessaire
+  // } //
+}
