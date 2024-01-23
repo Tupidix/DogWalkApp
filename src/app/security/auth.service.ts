@@ -55,6 +55,10 @@ export class AuthService {
     return this.#auth$.pipe(map((auth) => auth?.token));
   }
 
+  getId$(): Observable<string | undefined> {
+    return this.#auth$.pipe(map((auth) => auth?.id));
+  }
+
   /*
   Get all users and give the token to the API to do that
   */
@@ -120,7 +124,8 @@ export class AuthService {
       delayWhen((auth) => this.#saveAuth$(auth)),
       map((auth) => {
         this.#auth$.next(auth);
-        // console.log(`User ${auth.user.firstname} ${auth.user.lastname}logged in`);
+        console.log(`ID ICI`);
+        console.log(JSON.stringify(auth.id));
         console.log(`Logged In`);
         return auth.user;
       })
