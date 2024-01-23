@@ -20,24 +20,24 @@
           "options": {
             "outputPath": "www",
             "index": "src/index.html",
-            "polyfills": [
-              "src/polyfills.ts"
-            ],
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
+                "input": "node_modules/leaflet/dist/images",
+                "output": "leaflet/"
               }
             ],
             "styles": [
               "src/theme/variables.scss",
-              "src/global.scss"
+              "src/global.scss",
+              "node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": [],
-            "browser": "src/main.ts"
+            "browser": "src/main.ts",
+            "allowedCommonJsDependencies": ["leaflet"]
           },
           "configurations": {
             "production": {
@@ -109,10 +109,7 @@
                 "output": "assets"
               }
             ],
-            "styles": [
-              "src/theme/variables.scss",
-              "src/global.scss"
-            ],
+            "styles": ["src/theme/variables.scss", "src/global.scss"],
             "scripts": []
           },
           "configurations": {
@@ -125,19 +122,14 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@ionic/angular-toolkit"
-    ],
+    "schematicCollections": ["@ionic/angular-toolkit"],
     "analytics": false
   },
   "schematics": {

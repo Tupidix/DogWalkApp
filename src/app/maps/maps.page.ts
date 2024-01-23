@@ -14,11 +14,12 @@ import {
   IonRouterOutlet,
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { RouterModule } from '@angular/router';
 
 // Carte
-import { AfterViewInit } from '@angular/core';
-import * as L from 'leaflet';
-import { RouterModule } from '@angular/router';
+import { latLng, MapOptions, tileLayer } from 'leaflet';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { Map } from 'leaflet';
 
 @Component({
   selector: 'app-tab1',
@@ -40,23 +41,27 @@ import { RouterModule } from '@angular/router';
     IonButton,
     RouterModule,
     IonRouterOutlet,
+    LeafletModule,
   ],
 })
 // export class MapPage implements AfterViewInit {
-export class MapPage {
-  constructor() {}
+export class MapsPage {
+  mapOptions: MapOptions;
 
-  // ngAfterViewInit() {
-  //   this.initMap();
-  // }
+  constructor() {
+    this.mapOptions = {
+      layers: [
+        tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 20,
+          noWrap: true, // Pour éviter de prendre la carte dans le cache du navigateur
+        }),
+      ],
+      zoom: 15,
+      center: latLng(46.7813058, 6.6473608),
+    };
+  }
 
-  // initMap() {
-  //   const map = L.map('map').setView([46.7813058, 6.6473608], 13);
-
-  //   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(
-  //     map
-  //   );
-
-  //   // Ajoute des marqueurs, lignes, ou autres éléments à la carte si nécessaire
-  // } //
+  onMapReady(map: Map) {
+    setTimeout(() => map.invalidateSize(), 0);
+  }
 }

@@ -21,7 +21,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'maps',
-        loadComponent: () => import('./maps/maps.page').then((m) => m.MapPage),
+        loadComponent: () => import('./maps/maps.page').then((m) => m.MapsPage),
         children: [
           {
             path: 'walkers',
