@@ -33,11 +33,13 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
     IonInput,
     IonIcon,
     ExploreContainerComponent,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonIcon,
   ],
 })
-
 export class ProfilePage implements OnInit {
-
   constructor(
     // Inject the authentication provider.
     private auth: AuthService,
@@ -49,8 +51,8 @@ export class ProfilePage implements OnInit {
 
   // Add a method to log out.
   logOut() {
-    console.log("logging out...");
+    console.log('logging out...');
     this.auth.logOut();
-    this.router.navigateByUrl("/login");
+    this.router.navigateByUrl('/login');
   }
 }
