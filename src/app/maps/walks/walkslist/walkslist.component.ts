@@ -3,16 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AuthService } from 'src/app/security/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-walks',
-  templateUrl: './walks.page.html',
-  styleUrls: ['./walks.page.scss'],
+  selector: 'app-walkslist',
+  templateUrl: './walkslist.component.html',
+  styleUrls: ['./walkslist.component.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule],
 })
-export class WalksPage implements OnInit {
+export class WalkslistComponent implements OnInit {
   allWalks: any[] = [];
 
   constructor(private auth: AuthService) {}

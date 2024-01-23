@@ -14,28 +14,7 @@ import { shuffle } from 'ionicons/icons';
   imports: [IonicModule, CommonModule, FormsModule],
 })
 export class WalkersPage implements OnInit {
-  allUsers: any[] = [];
+  constructor() {}
 
-  constructor(
-    // Inject the authentication provider.
-    private auth: AuthService
-  ) {}
-
-  ngOnInit() {
-    // this.auth.getToken$().subscribe((token) => {
-    //   console.log('token: ' + token);
-    // });
-    this.auth.getAllUsers$().subscribe((users) => {
-      this.allUsers = users;
-
-      // Temporaire, prendre les 5 premiers résultats
-      if (users.length > 5) {
-        this.allUsers = this.allUsers.slice(0, 5);
-      }
-
-      // this.allUsers.forEach((user) => {
-      //   console.log(user);
-      // });
-    });
-  }
+  ngOnInit() {}
 }

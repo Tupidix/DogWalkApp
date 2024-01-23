@@ -28,6 +28,19 @@ export const routes: Routes = [
             // Go to the map.page
             loadComponent: () =>
               import('./maps/walkers/walkers.page').then((m) => m.WalkersPage),
+            children: [
+              {
+                path: '',
+                loadComponent: () =>
+                  import(
+                    './maps/walkers/walkerslist/walkerslist.component'
+                  ).then((m) => m.WalkerslistComponent),
+              },
+              {
+                path: ':walkerId',
+                // loadComponent: () => // Détail d'un walk
+              },
+            ],
           },
           {
             path: 'walks', // Servira de base pour afficher la carte
@@ -38,7 +51,10 @@ export const routes: Routes = [
               {
                 // Walks servira àa afficher la liste des walks au dessous de la carte présente dans le niveau au-dessus
                 path: '',
-                // loadComponent: () => // Liste des walks et bouton créer un walk
+                loadComponent: () =>
+                  import('./maps/walks/walkslist/walkslist.component').then(
+                    (m) => m.WalkslistComponent
+                  ),
               },
               {
                 // Servira à afficher le détail d'un walk au dessous de la carte présente dans le niveau au-dessus
