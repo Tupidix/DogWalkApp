@@ -1,21 +1,24 @@
-import { Injectable } from "@angular/core";
-import { Observable, ReplaySubject, filter, map, from } from "rxjs";
-import { delayWhen } from "rxjs/operators";
-import { AuthResponse } from "./auth-response.model";
-import { HttpClient } from "@angular/common/http";
-import { User } from "./user.model";
-import { AuthRequest } from "./auth-request.model";
-import { Storage } from "@ionic/storage-angular";
+import { Injectable } from '@angular/core';
+import { Observable, ReplaySubject, filter, map, from } from 'rxjs';
+import { delayWhen } from 'rxjs/operators';
+import { AuthResponse } from './auth-response.model';
+import { HttpClient } from '@angular/common/http';
+import { User } from './user.model';
+import { AuthRequest } from './auth-request.model';
+import { Storage } from '@ionic/storage-angular';
+import { switchMap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 /***********************************************************/
 /*********!!! REPLACE BELOW WITH YOUR API URL !!! **********/
 /***********************************************************/
-const API_URL = "https://dogwalkapi.onrender.com";
+const API_URL = 'https://dogwalkapi.onrender.com';
 
 /**
  * Authentication service for login/logout.
  */
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   #auth$: ReplaySubject<AuthResponse | undefined>;
 
@@ -52,6 +55,23 @@ export class AuthService {
     return this.#auth$.pipe(map((auth) => auth?.token));
   }
 
+  /*
+  Get all users and give the token to the API to do that
+  */
+  getAllUsers$(): Observable<User[]> {
+    const authUrl = `${API_URL}/users`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.get<User[]>(authUrl, { headers });
+      })
+    );
+  }
+
   /**
    * Sends an authentication request to the backend API in order to log in a user with the
    * provided `authRequest` object.
@@ -60,12 +80,11 @@ export class AuthService {
    * @returns An `Observable` that will emit the logged in `User` object on success.
    */
   logIn$(authRequest: AuthRequest): Observable<User> {
-
     const authUrl = `${API_URL}/users/login`;
     return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
       // Delay the observable stream while persisting the authentication response.
       delayWhen((auth) => this.#saveAuth$(auth)),
-      map(auth => {
+      map((auth) => {
         this.#auth$.next(auth);
         // console.log(`User ${auth.user.firstname} ${auth.user.lastname}logged in`);
         console.log(`Logged In`);
@@ -81,18 +100,20 @@ export class AuthService {
    * @returns An `Observable` that will emit when the authentication is persisted
    */
   #saveAuth$(auth: AuthResponse): Observable<void> {
-    return from(this.storage.set("auth", auth));
+    return from(this.storage.set('auth', auth));
+  }
+
+  getToken(): any | undefined {
+    return from(this.storage.get('auth')).pipe(map((auth) => auth?.token));
   }
 
   /**
    * Logs out the current user.
    */
-   logOut() {
+  logOut() {
     this.#auth$.next(undefined);
     // Remove the stored authentication from storage when logging out.
     this.storage.remove('auth');
     console.log('User logged out');
   }
-
-  
 }

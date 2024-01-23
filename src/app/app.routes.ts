@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs/tabs.page';
-import { onlyAuthenticated } from "./security/only-authenticated.guard";
+import { onlyAuthenticated } from './security/only-authenticated.guard';
 
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: () => import('./security/login/login.page').then( m => m.LoginPage)
+    loadComponent: () =>
+      import('./security/login/login.page').then((m) => m.LoginPage),
   },
   {
     path: 'register',
@@ -73,10 +74,11 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    loadComponent: () => import('./profile/profile.page').then( m => m.ProfilePage)
+    loadComponent: () =>
+      import('./profile/profile.page').then((m) => m.ProfilePage),
   },
   {
     path: 'dogs',
-    loadComponent: () => import('./dogs/dogs.page').then( m => m.DogsPage)
+    loadComponent: () => import('./dogs/dogs.page').then((m) => m.DogsPage),
   },
 ];
