@@ -76,6 +76,23 @@ export class AuthService {
     );
   }
 
+  /*
+  Get all users and give the token to the API to do that
+  */
+  getAllDogs$(): Observable<User[]> {
+    const authUrl = `${API_URL}/dogs`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.get<User[]>(authUrl, { headers });
+      })
+    );
+  }
+
   /**
    * Sends an authentication request to the backend API in order to log in a user with the
    * provided `authRequest` object.
