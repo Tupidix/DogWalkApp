@@ -21,11 +21,14 @@ export class WalkersPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.auth.getToken$().subscribe((token) => {
-      console.log('token: ' + token);
-    });
+    // this.auth.getToken$().subscribe((token) => {
+    //   console.log('token: ' + token);
+    // });
     this.auth.getAllUsers$().subscribe((users) => {
-      console.log('users: ' + JSON.stringify(users));
+      let allUsers = users;
+      allUsers.forEach((user) => {
+        console.log(user.firstname);
+      });
     });
   }
 }
