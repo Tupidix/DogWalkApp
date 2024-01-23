@@ -73,6 +73,23 @@ export class AuthService {
   }
 
   /*
+  Get all walks and give the token to the API to do that
+  */
+  getAllWalks$(): Observable<User[]> {
+    const authUrl = `${API_URL}/walks`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.get<User[]>(authUrl, { headers });
+      })
+    );
+  }
+
+  /*
   Get all users and give the token to the API to do that
   */
   getAllDogs$(): Observable<User[]> {

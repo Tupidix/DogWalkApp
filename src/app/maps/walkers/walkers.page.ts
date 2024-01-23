@@ -18,9 +18,7 @@ export class WalkersPage implements OnInit {
 
   constructor(
     // Inject the authentication provider.
-    private auth: AuthService,
-    // Inject the router
-    private router: Router
+    private auth: AuthService
   ) {}
 
   ngOnInit() {
@@ -31,7 +29,9 @@ export class WalkersPage implements OnInit {
       this.allUsers = users;
 
       // Temporaire, prendre les 5 premiers résultats
-      this.allUsers = this.allUsers.slice(0, 5);
+      if (users.length > 5) {
+        this.allUsers = this.allUsers.slice(0, 5);
+      }
 
       // this.allUsers.forEach((user) => {
       //   console.log(user);
