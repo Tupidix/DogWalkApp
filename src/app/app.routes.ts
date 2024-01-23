@@ -71,4 +71,12 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'profile',
+    loadComponent: () => import('./profile/profile.page').then( m => m.ProfilePage)
+  },
+  {
+    path: 'dogs',
+    loadComponent: () => import('./dogs/dogs.page').then( m => m.DogsPage)
+  },
 ];
