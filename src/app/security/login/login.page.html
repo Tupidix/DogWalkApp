@@ -14,7 +14,7 @@
     <form #loginForm="ngForm" (submit)="onSubmit(loginForm)">
       <!-- Username input -->
       <ion-input
-        label="Username"
+        label="Email"
         labelPlacement="floating"
         inputmode="text"
         #username="ngModel"
@@ -51,8 +51,9 @@
   
       <!-- Error message displayed if the login failed -->
       <ion-text color="danger" *ngIf="loginError"
-        >Username or password is invalid.</ion-text
+        >Email or password is invalid.</ion-text
       >
     </form>
+    <ion-button href="/register" color="light">REGISTER</ion-button>
   </div>
 </ion-content>
