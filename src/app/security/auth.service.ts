@@ -67,7 +67,8 @@ export class AuthService {
       delayWhen((auth) => this.#saveAuth$(auth)),
       map(auth => {
         this.#auth$.next(auth);
-        console.log(`User ${auth.user.firstname} ${auth.user.lastname}logged in`);
+        // console.log(`User ${auth.user.firstname} ${auth.user.lastname}logged in`);
+        console.log(`Logged In`);
         return auth.user;
       })
     );
