@@ -17,9 +17,9 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
 import { RouterModule } from '@angular/router';
 
 // Carte
-import { latLng, MapOptions, tileLayer } from 'leaflet';
+import { latLng, MapOptions, tileLayer, Map, marker, Marker } from 'leaflet';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { Map } from 'leaflet';
+import { defaultIcon } from './default-marker';
 
 @Component({
   selector: 'app-tab1',
@@ -48,6 +48,8 @@ import { Map } from 'leaflet';
 export class MapsPage {
   mapOptions: MapOptions;
 
+  mapMarkers: Marker[];
+
   constructor() {
     this.mapOptions = {
       layers: [
@@ -59,6 +61,12 @@ export class MapsPage {
       zoom: 15,
       center: latLng(46.7813058, 6.6473608),
     };
+
+    this.mapMarkers = [
+      marker([46.7813058, 6.6473608], { icon: defaultIcon }).bindTooltip(
+        'We were created with ❤️ here !'
+      ),
+    ];
   }
 
   onMapReady(map: Map) {
