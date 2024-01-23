@@ -17,14 +17,14 @@
         label="Email"
         labelPlacement="floating"
         inputmode="text"
-        #username="ngModel"
+        #email="ngModel"
         required="true"
-        name="username"
-        [(ngModel)]="authRequest.username"
+        name="email"
+        [(ngModel)]="authRequest.email"
       ></ion-input>
-      <!-- Error message displayed if the username is invalid -->
-      <ion-text color="danger" *ngIf="username.invalid && username.touched"
-        >Username is required.</ion-text
+      <!-- Error message displayed if the email is invalid -->
+      <ion-text color="danger" *ngIf="email.invalid && email.touched"
+        >Email is required.</ion-text
       >
   
       <!-- Password input -->
