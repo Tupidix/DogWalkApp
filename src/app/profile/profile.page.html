@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title>Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +10,23 @@
       <ion-title size="large">profile</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div id="topInfo">
+  <h1>Personal informations</h1>
+  <ion-icon name="pencil-outline"></ion-icon>
+  </div>
+  <ion-item>
+    <!--  [(ngModel)]="user.firstName" -->
+    <ion-input type="text" label="First name" disabled="true"></ion-input>
+    <!--  [(ngModel)]="user.lastname" -->
+    <ion-input type="text" label="Last name" disabled="true"></ion-input>
+    <!--  [(ngModel)]="user.email" -->
+    <ion-input type="text" label="Email" disabled="true"></ion-input>
+    <!--  [(ngModel)]="user.email" -->
+    <ion-input type="text" label="Password" disabled="true"></ion-input>
+
+    <ion-input type="date" label="Birthdate" disabled="true"></ion-input>
+  </ion-item>
+  <!-- Logout button -->
+    <ion-button (click)="logOut()">LOG OUT
+    </ion-button>
 </ion-content>

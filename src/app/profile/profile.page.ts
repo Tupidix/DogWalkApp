@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/security/auth.service";
+import {NgModel} from "@angular/forms";
 import {
   IonHeader,
   IonToolbar,
@@ -8,6 +9,10 @@ import {
   IonContent,
   IonButton,
   IonButtons,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 
@@ -23,6 +28,10 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
     IonContent,
     IonButton,
     IonButtons,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonIcon,
     ExploreContainerComponent,
   ],
 })
