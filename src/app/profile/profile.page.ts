@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { AuthService } from "src/app/security/auth.service";
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/security/auth.service';
 import {
   IonHeader,
   IonToolbar,
@@ -8,6 +8,14 @@ import {
   IonContent,
   IonButton,
   IonButtons,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonTextarea,
+  IonSelect,
+  IonIcon,
+  IonAvatar,
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 
@@ -24,11 +32,17 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
     IonButton,
     IonButtons,
     ExploreContainerComponent,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonTextarea,
+    IonSelect,
+    IonIcon,
+    IonAvatar,
   ],
 })
-
 export class ProfilePage implements OnInit {
-
   constructor(
     // Inject the authentication provider.
     private auth: AuthService,
@@ -40,8 +54,8 @@ export class ProfilePage implements OnInit {
 
   // Add a method to log out.
   logOut() {
-    console.log("logging out...");
+    console.log('logging out...');
     this.auth.logOut();
-    this.router.navigateByUrl("/login");
+    this.router.navigateByUrl('/login');
   }
 }
