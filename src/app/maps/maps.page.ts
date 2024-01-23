@@ -14,7 +14,7 @@ import {
   IonRouterOutlet,
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 // Carte
 import { latLng, MapOptions, tileLayer, Map, marker, Marker } from 'leaflet';
@@ -51,7 +51,7 @@ export class MapsPage {
 
   mapMarkers: Marker[];
 
-  constructor() {
+  constructor(private router: Router) {
     this.getUserLocation();
 
     this.mapOptions = {

@@ -11,11 +11,11 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-segment value="default">
-    <ion-segment-button value="default" routerLink="./walkers">
+  <ion-segment>
+    <ion-segment-button value="walkers" routerLink="./walkers" routerLinkActive="active-link">
       <ion-label>Walkers</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="walks" routerLink="./walks">
+    <ion-segment-button value="walks" routerLink="./walks" routerLinkActive="active-link">
       <ion-label>Walks</ion-label>
     </ion-segment-button>
   </ion-segment>
@@ -24,6 +24,6 @@
     (leafletMapReady)="onMapReady($event)"></div>
 
   <ion-content>
-    <ion-router-outlet [animated]="false"></ion-router-outlet>
+    <ion-router-outlet></ion-router-outlet>
   </ion-content>
 </ion-content>
