@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Create a walk</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+  <div class="leaflet-map" leaflet [leafletOptions]="mapOptions" [leafletLayers]="mapMarkers"
+    (leafletMapReady)="onMapReady($event)"></div>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Departure time</ion-label>
+      <ion-note slot="end">{{heure}}h{{minute}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Distance traveled</ion-label>
+      <ion-note slot="end">xxx</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-button color="danger" (click)="setOpen(true)">Stop recording</ion-button>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <p>
+          Are you sure you want to stop the recording of your route ?
+        </p>
+
+        <!-- Display the button wisth 100% width -->
+
+
+        <ion-button expand="block" (click)="setOpen(false)">Not sure</ion-button>
+        <ion-button color="danger" href="./createawalk" (click)="setOpen(false)">Yes, stop it</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

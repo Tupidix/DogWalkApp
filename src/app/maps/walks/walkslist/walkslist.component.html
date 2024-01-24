@@ -8,6 +8,18 @@
     </ion-item>
   </ion-list>
 
-  <ion-button>Add Walk</ion-button>
 
-</ion-content>
+  <ion-button (click)="setOpen(true)">Add Walk</ion-button>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <p>
+          By pressing continue, you agree to allow the platform to record your location in order to create the route,
+          and acknowledge that your phone's battery may deplete faster than usual.
+        </p>
+
+        <ion-button expand="block" href="./createawalk" (click)="setOpen(false)">Continue</ion-button>
+        <ion-button color="danger" (click)="setOpen(false)">I don't want to create a walk</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>

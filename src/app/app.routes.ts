@@ -15,6 +15,11 @@ export const routes: Routes = [
       import('./register/register.page').then((m) => m.RegisterPage),
   },
   {
+    path: 'createawalk',
+    loadComponent: () =>
+      import('./createawalk/createawalk.page').then((m) => m.CreateawalkPage),
+  },
+  {
     path: '',
     component: TabsPage,
     canActivate: [onlyAuthenticated],
@@ -37,11 +42,12 @@ export const routes: Routes = [
                   ).then((m) => m.WalkerslistComponent),
               },
               {
+                // Servira à afficher le détail d'un walk au dessous de la carte présente dans le niveau au-dessus
                 path: ':walkerId',
                 loadComponent: () =>
                   import(
-                    './maps/walkers/walkerdetail/walkerdetail.component'
-                  ).then((m) => m.WalkerdetailComponent),
+                    './maps/walkers/walkerdetails/walkerdetails.component'
+                  ).then((m) => m.WalkerdetailsComponent),
               },
             ],
           },

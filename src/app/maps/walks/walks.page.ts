@@ -10,6 +10,9 @@ import { latLng, MapOptions, tileLayer, Map, marker, Marker } from 'leaflet';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { defaultIcon, MyLocationIcon } from '../default-marker';
 
+// Geolocalisation
+import { Geolocation } from '@capacitor/geolocation';
+
 @Component({
   selector: 'app-walks',
   templateUrl: './walks.page.html',
@@ -61,8 +64,8 @@ export class WalksPage implements OnInit {
   }
 
   getUserLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
+    Geolocation.getCurrentPosition()
+      .then((position) => {
         const userLocation = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -73,10 +76,10 @@ export class WalksPage implements OnInit {
             icon: MyLocationIcon,
           }).bindTooltip('Your position')
         );
+      })
+      .catch((err) => {
+        console.error('Error getting user location', err);
       });
-    } else {
-      console.log('Nous mettrons une localisation par défaut ici');
-    }
   }
 
   ngOnInit() {

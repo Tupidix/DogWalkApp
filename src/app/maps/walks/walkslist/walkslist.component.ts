@@ -14,6 +14,12 @@ import { AuthService } from 'src/app/security/auth.service';
 export class WalkslistComponent implements OnInit {
   allWalks: any[] = [];
 
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
   constructor(private auth: AuthService) {}
 
   ngOnInit() {
