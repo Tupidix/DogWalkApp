@@ -20,9 +20,6 @@
     </ion-segment-button>
   </ion-segment>
 
-  <div class="leaflet-map" leaflet [leafletOptions]="mapOptions" [leafletLayers]="mapMarkers"
-    (leafletMapReady)="onMapReady($event)"></div>
-
   <ion-content>
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
