@@ -38,7 +38,10 @@ export const routes: Routes = [
               },
               {
                 path: ':walkerId',
-                // loadComponent: () => // Détail d'un walk
+                loadComponent: () =>
+                  import(
+                    './maps/walkers/walkerdetail/walkerdetail.component'
+                  ).then((m) => m.WalkerdetailComponent),
               },
             ],
           },
@@ -59,7 +62,10 @@ export const routes: Routes = [
               {
                 // Servira à afficher le détail d'un walk au dessous de la carte présente dans le niveau au-dessus
                 path: ':walkId',
-                // loadComponent: () => // Détail d'un walk
+                loadComponent: () =>
+                  import('./maps/walks/walkdetails/walkdetails.component').then(
+                    (m) => m.WalkdetailsComponent
+                  ),
               },
             ],
           },

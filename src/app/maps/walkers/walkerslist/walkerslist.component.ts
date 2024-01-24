@@ -33,9 +33,10 @@ export class WalkerslistComponent implements OnInit {
         this.allUsers = this.allUsers.slice(0, 5);
       }
 
-      // this.allUsers.forEach((user) => {
-      //   console.log(user);
-      // });
+      // Dev only
+      this.allUsers.forEach((user) => {
+        console.log(user);
+      });
     });
   }
 }

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 // Carte
 import { latLng, MapOptions, tileLayer, Map, marker, Marker } from 'leaflet';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { defaultIcon } from '../default-marker';
+import { defaultIcon, MyLocationIcon } from '../default-marker';
 
 @Component({
   selector: 'app-walks',
@@ -57,7 +57,7 @@ export class WalksPage implements OnInit {
     // });
 
     // N'est plus nécessaire à voir selon les exemples de code et en plus j'ai mis le noWrap à true
-    setTimeout(() => map.invalidateSize(), 0);
+    setTimeout(() => map.invalidateSize(), 100);
   }
 
   getUserLocation() {
@@ -68,6 +68,11 @@ export class WalksPage implements OnInit {
           lng: position.coords.longitude,
         };
         this.map?.setView(userLocation, 14); // 13 est le niveau de zoom
+        this.mapMarkers.push(
+          marker([userLocation.lat, userLocation.lng], {
+            icon: MyLocationIcon,
+          }).bindTooltip('Your position')
+        );
       });
     } else {
       console.log('Nous mettrons une localisation par défaut ici');

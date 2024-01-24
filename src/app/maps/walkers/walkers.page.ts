@@ -4,18 +4,27 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AuthService } from 'src/app/security/auth.service';
 import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 // Carte
 import { latLng, MapOptions, tileLayer, Map, marker, Marker } from 'leaflet';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { defaultIcon } from '../default-marker';
+import { defaultIcon, MyLocationIcon } from '../default-marker';
 
 @Component({
   selector: 'app-walkers',
   templateUrl: './walkers.page.html',
   styleUrls: ['./walkers.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, LeafletModule],
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    RouterModule,
+    LeafletModule,
+  ],
 })
 export class WalkersPage implements OnInit {
   map: Map | null = null;
@@ -57,7 +66,7 @@ export class WalkersPage implements OnInit {
     // });
 
     // N'est plus nécessaire à voir selon les exemples de code et en plus j'ai mis le noWrap à true
-    setTimeout(() => map.invalidateSize(), 0);
+    setTimeout(() => map.invalidateSize(), 100);
   }
 
   getUserLocation() {
@@ -68,6 +77,11 @@ export class WalkersPage implements OnInit {
           lng: position.coords.longitude,
         };
         this.map?.setView(userLocation, 14); // 13 est le niveau de zoom
+        this.mapMarkers.push(
+          marker([userLocation.lat, userLocation.lng], {
+            icon: MyLocationIcon,
+          }).bindTooltip('Your position')
+        );
       });
     } else {
       console.log('Nous mettrons une localisation par défaut ici');
