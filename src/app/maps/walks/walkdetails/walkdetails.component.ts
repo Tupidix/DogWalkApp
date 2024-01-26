@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/security/auth.service';
 export class WalkdetailsComponent implements OnInit {
   walk: any = {};
   user: any = {
-    firstname: 'User',
+    firstname: 'This user',
     lastname: "doesn't exist anymore",
   };
 
