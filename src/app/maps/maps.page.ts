@@ -14,10 +14,6 @@ import {
   IonRouterOutlet,
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
-
-// Carte
-import { AfterViewInit } from '@angular/core';
-import * as L from 'leaflet';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -43,20 +39,6 @@ import { RouterModule } from '@angular/router';
   ],
 })
 // export class MapPage implements AfterViewInit {
-export class MapPage {
+export class MapsPage {
   constructor() {}
-
-  // ngAfterViewInit() {
-  //   this.initMap();
-  // }
-
-  // initMap() {
-  //   const map = L.map('map').setView([46.7813058, 6.6473608], 13);
-
-  //   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(
-  //     map
-  //   );
-
-  //   // Ajoute des marqueurs, lignes, ou autres éléments à la carte si nécessaire
-  // } //
 }

@@ -1,11 +1,10 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.css" />
 <ion-content>
-  <h1>walkers around you</h1>
-  <ion-list>
-    <ion-item *ngFor="let user of allUsers">
-      <ion-label>
-        {{user.firstname}} {{user.lastname}}
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <div class="leaflet-map" leaflet [leafletOptions]="mapOptions" [leafletLayers]="mapMarkers"
+    (leafletMapReady)="onMapReady($event)"></div>
+
+  <ion-content>
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
 
 </ion-content>

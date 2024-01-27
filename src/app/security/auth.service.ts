@@ -13,7 +13,8 @@ import { HttpHeaders } from '@angular/common/http';
 /***********************************************************/
 /*********!!! REPLACE BELOW WITH YOUR API URL !!! **********/
 /***********************************************************/
-const API_URL = 'https://dogwalkapi.onrender.com';
+// const API_URL = 'https://dogwalkapi.onrender.com';
+const API_URL = 'http://localhost:3001';
 
 /**
  * Authentication service for login/logout.
@@ -43,9 +44,9 @@ export class AuthService {
    * @returns An `Observable` that will emit the currently authenticated `User` object only if there
    * currently is an authenticated user.
    */
-  getUser$(): Observable<User | undefined> {
-    return this.#auth$.pipe(map((auth) => auth?.user));
-  }
+  // getUser$(): Observable<User | undefined> {
+  //   return this.#auth$.pipe(map((auth) => auth?.user));
+  // }
 
   /**
    * @returns An `Observable` that will emit the currently authenticated user's `token`, only if there
@@ -72,6 +73,68 @@ export class AuthService {
         });
 
         return this.http.get<User[]>(authUrl, { headers });
+      })
+    );
+  }
+
+  getUser$(id: string): Observable<User> {
+    const authUrl = `${API_URL}/users/${id}`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.get<User>(authUrl, { headers });
+      })
+    );
+  }
+
+  /*
+  Get all walks and give the token to the API to do that
+  */
+  getAllWalks$(): Observable<User[]> {
+    const authUrl = `${API_URL}/walks`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.get<User[]>(authUrl, { headers });
+      })
+    );
+  }
+
+  /*
+  Get informations of a specific walk and give the token to the API to do that
+  */
+  getWalk$(id: string): Observable<User> {
+    const authUrl = `${API_URL}/walks/${id}`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.get<User>(authUrl, { headers });
+      })
+    );
+  }
+
+  postWalk$(walk: any): Observable<User> {
+    const authUrl = `${API_URL}/walks`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.post<User>(authUrl, walk, { headers });
       })
     );
   }

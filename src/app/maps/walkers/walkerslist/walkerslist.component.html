@@ -1,0 +1,12 @@
+<ion-content>
+  <h1>Walkers around you</h1>
+  <ion-list>
+    <ion-item *ngFor="let user of allUsers" href="./maps/walkers/{{user._id}}" detail>
+      <ion-label>
+        {{user.firstname}} {{user.lastname}}
+      </ion-label>
+      <ion-note slot="end">Position inconnue</ion-note>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

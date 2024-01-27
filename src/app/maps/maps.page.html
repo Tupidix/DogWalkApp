@@ -1,28 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Map
+      Maps
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-  <ion-toolbar>
-    <ion-title size="large">Map</ion-title>
-  </ion-toolbar>
-</ion-header> -->
 
   <ion-segment value="default">
     <ion-segment-button value="default" routerLink="./walkers">
       <ion-label>Walkers</ion-label>
     </ion-segment-button>
-    <ion-segment-button value=" walks" routerLink="./walks">
+    <ion-segment-button value="walks" routerLink="./walks">
       <ion-label>Walks</ion-label>
     </ion-segment-button>
   </ion-segment>
 
   <ion-content>
-    <ion-router-outlet [animated]="false"></ion-router-outlet>
+    <ion-router-outlet></ion-router-outlet>
   </ion-content>
 </ion-content>

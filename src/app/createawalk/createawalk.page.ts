@@ -1,43 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NonNullableFormBuilder } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { AuthService } from 'src/app/security/auth.service';
-import { Router } from '@angular/router';
-import { RouterLink } from '@angular/router';
-import { RouterModule } from '@angular/router';
 
 // Carte
 import { latLng, MapOptions, tileLayer, Map, marker, Marker } from 'leaflet';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { defaultIcon, MyLocationIcon } from '../default-marker';
+import { MyLocationIcon } from '../maps/default-marker';
 
 // Geolocalisation
 import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
-  selector: 'app-walkers',
-  templateUrl: './walkers.page.html',
-  styleUrls: ['./walkers.page.scss'],
+  selector: 'app-createawalk',
+  templateUrl: './createawalk.page.html',
+  styleUrls: ['./createawalk.page.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    RouterLink,
-    RouterModule,
-    LeafletModule,
-  ],
+  imports: [IonicModule, CommonModule, FormsModule, LeafletModule],
 })
-export class WalkersPage implements OnInit {
+export class CreateawalkPage implements OnInit {
+  heure: number | string;
+  minute: number | string;
+
   map: Map | null = null;
   mapOptions: MapOptions;
 
-  mapMarkers: Marker[];
+  mapMarkers: Marker[] = [];
+  isModalOpen = false;
 
-  allWalkers: any[] = [];
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor() {
+    // Prendre l'heure actuelle
+    this.heure = new Date().getHours();
+    // Prendre les minutes actuelles
+    this.minute = new Date().getMinutes();
+
+    this.heure = this.heure < 10 ? '0' + this.heure : this.heure;
+    this.minute = this.minute < 10 ? '0' + this.minute : this.minute;
+
     this.getUserLocation();
 
     this.mapOptions = {
@@ -47,15 +50,7 @@ export class WalkersPage implements OnInit {
           noWrap: true, // Pour éviter de prendre la carte dans le cache du navigateur
         }),
       ],
-      zoom: 14, // Géré plus bas dans getUserLocation()
-      center: latLng(46.7813058, 6.6473608), // Utile si la géolocalisation ne fonctionne pas
     };
-
-    this.mapMarkers = [
-      marker([46.7813058, 6.6473608], { icon: defaultIcon }).bindTooltip(
-        'We were created with ❤️ here !'
-      ),
-    ];
   }
 
   onMapReady(map: Map) {
@@ -91,21 +86,5 @@ export class WalkersPage implements OnInit {
       });
   }
 
-  ngOnInit() {
-    // this.auth.getToken$().subscribe((token) => {
-    //   console.log('token: ' + token);
-    // });
-    this.auth.getAllUsers$().subscribe((walkers) => {
-      this.allWalkers = walkers;
-
-      // Temporaire, prendre les 5 premiers résultats
-      if (walkers.length > 5) {
-        this.allWalkers = this.allWalkers.slice(0, 5);
-      }
-
-      // this.allWalkers.forEach((walk) => {
-      //   console.log(walk);
-      // });
-    });
-  }
+  ngOnInit() {}
 }

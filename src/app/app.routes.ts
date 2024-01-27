@@ -15,19 +15,41 @@ export const routes: Routes = [
       import('./register/register.page').then((m) => m.RegisterPage),
   },
   {
+    path: 'createawalk',
+    loadComponent: () =>
+      import('./createawalk/createawalk.page').then((m) => m.CreateawalkPage),
+  },
+  {
     path: '',
     component: TabsPage,
     canActivate: [onlyAuthenticated],
     children: [
       {
         path: 'maps',
-        loadComponent: () => import('./maps/maps.page').then((m) => m.MapPage),
+        loadComponent: () => import('./maps/maps.page').then((m) => m.MapsPage),
         children: [
           {
             path: 'walkers',
             // Go to the map.page
             loadComponent: () =>
               import('./maps/walkers/walkers.page').then((m) => m.WalkersPage),
+            children: [
+              {
+                path: '',
+                loadComponent: () =>
+                  import(
+                    './maps/walkers/walkerslist/walkerslist.component'
+                  ).then((m) => m.WalkerslistComponent),
+              },
+              {
+                // Servira à afficher le détail d'un walk au dessous de la carte présente dans le niveau au-dessus
+                path: ':walkerId',
+                loadComponent: () =>
+                  import(
+                    './maps/walkers/walkerdetails/walkerdetails.component'
+                  ).then((m) => m.WalkerdetailsComponent),
+              },
+            ],
           },
           {
             path: 'walks', // Servira de base pour afficher la carte
@@ -38,12 +60,18 @@ export const routes: Routes = [
               {
                 // Walks servira àa afficher la liste des walks au dessous de la carte présente dans le niveau au-dessus
                 path: '',
-                // loadComponent: () => // Liste des walks et bouton créer un walk
+                loadComponent: () =>
+                  import('./maps/walks/walkslist/walkslist.component').then(
+                    (m) => m.WalkslistComponent
+                  ),
               },
               {
                 // Servira à afficher le détail d'un walk au dessous de la carte présente dans le niveau au-dessus
                 path: ':walkId',
-                // loadComponent: () => // Détail d'un walk
+                loadComponent: () =>
+                  import('./maps/walks/walkdetails/walkdetails.component').then(
+                    (m) => m.WalkdetailsComponent
+                  ),
               },
             ],
           },
@@ -73,12 +101,8 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'profile',
-    loadComponent: () =>
-      import('./profile/profile.page').then((m) => m.ProfilePage),
-  },
-  {
-    path: 'dogs',
-    loadComponent: () => import('./dogs/dogs.page').then((m) => m.DogsPage),
+    path: '',
+    redirectTo: '/maps',
+    pathMatch: 'full',
   },
 ];
