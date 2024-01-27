@@ -16,9 +16,11 @@
     </ion-item>
     <ion-item>
       <ion-label>Distance traveled</ion-label>
-      <ion-note slot="end">xxx</ion-note>
+      <ion-note slot="end">{{distanceTraveled}} m</ion-note>
     </ion-item>
   </ion-list>
+
+  <ion-button expand="block" (click)="centerMap()">Center View</ion-button>
 
   <ion-grid>
     <ion-row class="ion-align-items-center">
@@ -46,7 +48,7 @@
         <ion-grid>
           <ion-row class="ion-align-items-center">
             <ion-col size="12" class="ion-text-center">
-              <ion-button color="danger" href="./createawalk" (click)="setOpen(false)">Yes, stop it</ion-button>
+              <ion-button color="danger" (click)="setOpen(false); stopWatching()">Yes, stop it</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
