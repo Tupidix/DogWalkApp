@@ -8,8 +8,14 @@
     </ion-item>
   </ion-list>
 
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button class="center" (click)="setOpen(true)">Add Walk</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <ion-button (click)="setOpen(true)">Add Walk</ion-button>
   <ion-modal [isOpen]="isModalOpen">
     <ng-template>
       <ion-content class="ion-padding">
@@ -18,8 +24,21 @@
           and acknowledge that your phone's battery may deplete faster than usual.
         </p>
 
-        <ion-button expand="block" href="./createawalk" (click)="setOpen(false)">Continue</ion-button>
-        <ion-button color="danger" (click)="setOpen(false)">I don't want to create a walk</ion-button>
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="12" class="ion-text-center">
+              <ion-button expand="block" href="./createawalk" (click)="setOpen(false)">Continue</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="12" class="ion-text-center">
+              <ion-button color="danger" (click)="setOpen(false)">I don't want to create a walk</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-content>
     </ng-template>
   </ion-modal>

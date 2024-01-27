@@ -20,7 +20,14 @@
     </ion-item>
   </ion-list>
 
-  <ion-button color="danger" (click)="setOpen(true)">Stop recording</ion-button>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button color="danger" (click)="setOpen(true)">Stop recording</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <ion-modal [isOpen]="isModalOpen">
     <ng-template>
       <ion-content class="ion-padding">
@@ -28,11 +35,21 @@
           Are you sure you want to stop the recording of your route ?
         </p>
 
-        <!-- Display the button wisth 100% width -->
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="12" class="ion-text-center">
+              <ion-button expand="block" (click)="setOpen(false)">Not sure</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
-
-        <ion-button expand="block" (click)="setOpen(false)">Not sure</ion-button>
-        <ion-button color="danger" href="./createawalk" (click)="setOpen(false)">Yes, stop it</ion-button>
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="12" class="ion-text-center">
+              <ion-button color="danger" href="./createawalk" (click)="setOpen(false)">Yes, stop it</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-content>
     </ng-template>
   </ion-modal>
