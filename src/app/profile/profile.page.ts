@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/security/auth.service';
-import { NgModel } from '@angular/forms';
+import { Router } from "@angular/router";
+import { AuthService } from "src/app/security/auth.service";
+import {NgModel} from "@angular/forms";
 import {
   IonHeader,
   IonToolbar,

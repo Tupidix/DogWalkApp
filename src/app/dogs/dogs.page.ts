@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/security/auth.service';
+import { filter, switchMap } from 'rxjs';
+import { isDefined } from '../utils';
 
 @Component({
   selector: 'app-dogs',
@@ -21,9 +23,15 @@ export class DogsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.auth.getAllDogs$().subscribe((dogs) => {
-      localStorage.setItem('dogs', JSON.stringify(dogs));
-      console.dir(dogs);
-    });
+    this.auth
+      .getId$()
+      .pipe(
+        filter(isDefined),
+        switchMap((id) => this.auth.getAllDogs$(id))
+      )
+      .subscribe((dogs) => {
+        localStorage.setItem('dogs', JSON.stringify(dogs));
+        console.dir(dogs);
+      });
   }
 }

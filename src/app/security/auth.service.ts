@@ -79,8 +79,8 @@ export class AuthService {
   /*
   Get all users and give the token to the API to do that
   */
-  getAllDogs$(): Observable<User[]> {
-    const authUrl = `${API_URL}/dogs`;
+  getAllDogs$(id: string): Observable<User[]> {
+    const authUrl = `${API_URL}/users/${id}`;
 
     return this.getToken$().pipe(
       switchMap((token) => {
