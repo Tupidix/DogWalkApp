@@ -13,7 +13,8 @@ import { HttpHeaders } from '@angular/common/http';
 /***********************************************************/
 /*********!!! REPLACE BELOW WITH YOUR API URL !!! **********/
 /***********************************************************/
-const API_URL = 'https://dogwalkapi.onrender.com';
+// const API_URL = 'https://dogwalkapi.onrender.com';
+const API_URL = 'http://localhost:3001';
 
 /**
  * Authentication service for login/logout.
@@ -120,6 +121,20 @@ export class AuthService {
         });
 
         return this.http.get<User>(authUrl, { headers });
+      })
+    );
+  }
+
+  postWalk$(walk: any): Observable<User> {
+    const authUrl = `${API_URL}/walks`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.post<User>(authUrl, walk, { headers });
       })
     );
   }
