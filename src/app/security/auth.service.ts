@@ -99,6 +99,32 @@ export class AuthService {
     );
   }
 
+  postUser$(user: any): Observable<User> {
+    const authUrl = `${API_URL}/users`;
+
+    // return this.getToken$().pipe(
+    //   switchMap((token) => {
+    //     const headers = new HttpHeaders({
+    //       Authorization: `Bearer ${token}`,
+    //     });
+
+        return this.http.post<User>(authUrl, user);
+    }
+  
+    updateUser$(user: any): Observable<User> {
+      const authUrl = `${API_URL}/users/${user.id}`;
+  
+      return this.getToken$().pipe(
+        switchMap((token) => {
+          const headers = new HttpHeaders({
+            Authorization: `Bearer ${token}`,
+          });
+  
+          return this.http.put<User>(authUrl, user, { headers });
+        })
+      );
+    }
+
   /*
   Get all walks and give the token to the API to do that
   */

@@ -18,21 +18,25 @@
   </div>
   <form #registerForm="ngForm" (submit)="displayJSON(registerForm)">
     <!-- Champs firstname -->
-    <ion-input label="First name" type="text" name="firstname" [(ngModel)]="firstname" placeholder="John" min-length="4" max-length="50" required #firstnameInput="ngModel"></ion-input>
+    <ion-input label="First name" type="text" name="firstname" [(ngModel)]="firstname" placeholder="John" min-length="3" max-length="50" required #firstnameInput="ngModel"></ion-input>
     <!-- erreur firstname -->
     <p *ngIf="firstnameInput.hasError('required') && firstnameInput.dirty">
       First name is required
     </p>
 
-    <p *ngIf="firstnameInput.hasError('min-length')&& firstnameInput.dirty">
+    <p *ngIf="firstnameInput.hasError('min-length') && firstnameInput.dirty || firstnameInput.hasError('max-length') && firstnameInput.dirty">
       Your first name must be between 4 and 50 characters
     </p>
 
     <!-- Champs lastname -->
-    <ion-input label="Last name" type="text" name="lastname" [(ngModel)]="lastname" placeholder="Doe" min-length="4" max-length="50" required #lastnameInput="ngModel"></ion-input>
+    <ion-input label="Last name" type="text" name="lastname" [(ngModel)]="lastname" placeholder="Doe" min-length="3" max-length="50" required #lastnameInput="ngModel"></ion-input>
     <!-- erreur lastname -->
-    <p *ngIf="lastnameInput.invalid && lastnameInput.dirty">
+    <p *ngIf="lastnameInput.hasError('required') && lastnameInput.dirty">
       Last name is required
+    </p>
+
+    <p *ngIf="lastnameInput.hasError('min-length') && lastnameInput.dirty || lastnameInput.hasError('max-length') && lastnameInput.dirty">
+      Your first name must be between 4 and 50 characters
     </p>
 
     <!-- Champs email -->
