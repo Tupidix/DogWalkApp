@@ -49,7 +49,7 @@ export class RegisterPage {
 constructor(){
 }
 
-  displayGreeting(form: NgForm) {
+  displayJSON(form: NgForm) {
     if (form.valid) {
     this.displayInfo = '{"firstname": "'+ this.firstname + '", "lastname": "' + this.lastname + '", "email": "' + this.email + '", "password": "' + this.password + '", "birthdate": "' + this.birthdate + '"}';
     console.log(this.displayInfo);
