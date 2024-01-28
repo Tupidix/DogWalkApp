@@ -86,6 +86,7 @@ Visionner les utilisateurs proche de vous sur la carte en tapant dessus vous pou
 
 ### Voir détail utilisateurs
 En pressant sur un utilisateur on peut voir des détails sur celui-ci ainsi que sa liste de chiens.
+
 <img src="images/profile_autre.png" alt="My Image" width="200"/>
 
 ## Bugs et fonctionnalité non-implémentée
