@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AuthService } from 'src/app/security/auth.service';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-dog-details',
@@ -14,7 +16,11 @@ import { AuthService } from 'src/app/security/auth.service';
 export class DogDetailsComponent implements OnInit {
   dog: any = {};
   defaultDate = '01-01-1970';
-  constructor(private auth: AuthService) {
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private auth: AuthService
+  ) {
     // Récupération de l'URL
     let currentUrl = window.location.href;
 
@@ -28,9 +34,33 @@ export class DogDetailsComponent implements OnInit {
       let day = date.getDate();
       let month = date.getMonth() + 1;
       let year = date.getFullYear();
-      this.dog.birthdate = day + '-' + month + '-' + year;
+      this.dog.birthdate = year + '-' + month + '-' + day;
     });
   }
 
   ngOnInit() {}
+  saveAndRedirect() {
+    // Récupération de l'URL
+    let currentUrl = window.location.href;
+
+    // Récupération de l'id du chien
+    let idDog: string = currentUrl.split('/').pop() || '';
+
+    this.auth.getId$().subscribe((userId) => {
+      // Call the post method from the auth service
+      this.auth.deleteDog$(idDog).subscribe(
+        (response) => {
+          // Handle the response here
+          console.log('Le chien a été créée avec succès !');
+          console.log(response);
+        },
+        (error) => {
+          // Handle the error here
+          console.log("Aie aie aie, il y a eu une erreur :'(");
+          console.error(error);
+        }
+      );
+      this.router.navigate(['/dogs']);
+    });
+  }
 }

@@ -15,7 +15,7 @@ import { isDefined } from '../utils';
 /*********!!! REPLACE BELOW WITH YOUR API URL !!! **********/
 /***********************************************************/
 const API_URL = 'https://dogwalkapi.onrender.com';
-// const API_URL = 'http://localhost:3001';
+// const API_URL = 'http://localhost:8100';
 
 /**
  * Authentication service for login/logout.
@@ -64,8 +64,10 @@ export class AuthService {
     );
   }
 
-  getMyID(): any {
-    return this.#auth$.pipe(map((auth) => auth?.id));
+  getMyID(): string | undefined {
+    let id: string | undefined;
+    this.getId$().subscribe((val) => (id = val));
+    return id;
   }
 
   /*
@@ -174,6 +176,48 @@ export class AuthService {
         });
 
         return this.http.get<User>(authUrl, { headers });
+      })
+    );
+  }
+
+  postDog$(dog: any): Observable<User> {
+    const authUrl = `${API_URL}/dogs`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.post<User>(authUrl, dog, { headers });
+      })
+    );
+  }
+
+  patchDog$(dog: any, id: string): Observable<User> {
+    const authUrl = `${API_URL}/dogs/${id}`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.patch<User>(authUrl, dog, { headers });
+      })
+    );
+  }
+
+  // delete a dog
+  deleteDog$(id: string): Observable<User> {
+    const authUrl = `${API_URL}/dogs/${id}`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+        return this.http.delete<User>(authUrl, { headers });
       })
     );
   }

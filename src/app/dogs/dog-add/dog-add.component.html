@@ -12,17 +12,18 @@
       </ion-item>
     </ion-item>
     <ion-item>
-      <ion-input label="Name" type="text" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="dogName" label="Name" type="text" placeholder="Dog's name"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Birthdate" type="date" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="dogBirthdate" label="Birthdate" type="date"
+        placeholder="Dog's birthdate (DD-MM-YYYY)"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Breed" type="text" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="dogBreed" label="Breed" type="text" placeholder="Dog's breed"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Picture" type="text" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="dogPicture" label="Picture" type="text" placeholder="Dog's picture"></ion-input>
     </ion-item>
-    <ion-button>ADD THIS DOG</ion-button>
+    <ion-button (click)="saveAndRedirect()">ADD THIS DOG</ion-button>
   </ion-list>
 </ion-content>

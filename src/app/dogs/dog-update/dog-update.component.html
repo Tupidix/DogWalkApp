@@ -1,26 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Update {{dog.name}}</ion-title>
+    <ion-title>Update {{existingDog.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item>
-      <ion-icon id="topInfo" aria-hidden="true" name="arrow-left-c" slot="start"></ion-icon>
+    <ion-item href="./dogs/{{existingDog._id}}">
+      <ion-icon id="topInfo" aria-hidden="true" name="arrow-left" slot="start"></ion-icon>
     </ion-item>
     <ion-item>
-      <ion-input label="Dog name" type="text" value="{{dog.name}}"></ion-input>
+      <ion-input [(ngModel)]="dogName" label="Dog name" type="text" value="{{existingDog.name}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Birthdate" type="date" value="{{dog.birthdate}}"></ion-input>
+      <ion-input [(ngModel)]="dogBirthdate" label="Birthdate" type="text" value="{{existingDog.birthdate}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Breed" type="text" value="{{dog.breed}}"></ion-input>
+      <ion-input [(ngModel)]="dogBreed" label="Breed" type="text" value="{{existingDog.breed}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Picture" type="text" value="{{dog.picture}}"></ion-input>
+      <ion-input [(ngModel)]="dogPicture" label="Picture" type="text" value="{{existingDog.picture}}"></ion-input>
     </ion-item>
-    <ion-button>UPDATE THIS DOG</ion-button>
+    <ion-button (click)="saveAndRedirect()">UPDATE THIS DOG</ion-button>
   </ion-list>
 </ion-content>
