@@ -44,10 +44,10 @@ export class DogUpdateComponent implements OnInit {
       let year = date.getFullYear();
 
       this.existingDog.birthdate = year + '-' + month + '-' + day;
-    });
 
-    this.auth.getId$().subscribe((id) => {
-      this.dogMaster = id;
+      this.auth.getId$().subscribe((id) => {
+        this.dogMaster = id;
+      });
     });
   }
 
