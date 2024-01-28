@@ -45,29 +45,7 @@ $ npm i
 $ ionic serve
 ```
 
-Dans src/environments/environment.ts remplacer le contenu présent par ceci
-
-```
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
-export const environment = {
-  production: false,
-  apiUrl: "https://dogwalkapi.onrender.com",
-  qimgUrl: "https://comem-qimg.onrender.com/api",
-  qimgSecret: "f0mFxxX+QnGPX6i+iLg8nB+v2wzcV9XMcbYpTmhEhcL3hwfYwjzAfDpqVdIeQJt9WzQjkV1F+Ke8ZPqDcfqIPwNrBl8DA44d+qEtSpX0OAuuxMeArCLjZWVOhZLcGtizrp0hzVbx7r869+nRPhZ+NzRy3iP3ZYX3gsxP6Zu05eE=",
-};
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
-```
+Dans src/environments/environment.ts remplacer le contenu présent par le contenu que nous vous avons envoyé par mail.
 
 ### Register
 Notre app permet de créer un nouvel utilisateur.
@@ -100,7 +78,7 @@ Après avoir séléctionné une balade, la carte va automatiquement se déplacer
 <img src="images/maps_chemins.png" alt="My Image" width="200"/> <img src="images/maps_chemin.png" alt="My Image" width="200"/>
 
 ### Voir les autres utilisateurs
-Visionner les utilisateurs proche de vous sur la carte (la personne connectée n'est pas affichée dans la liste de personnes en bas).
+Visionner les utilisateurs proche de vous sur la carte en tapant dessus vous pouvez voir de qui il s'agit. La personne connectée n'est pas affichée dans la liste de personnes en bas, seul les personnes avec une localisation enregistrée sont affichées dans la liste du bas. Les personnes se trouvant de multiples fois dans la liste sont des tests.
 
 <img src="images/walkers.png" alt="My Image" width="200"/>
 
