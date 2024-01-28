@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NonNullableFormBuilder } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 // Carte
 import {
@@ -15,6 +17,7 @@ import {
 } from 'leaflet';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MyLocationIcon, trackingIcon } from '../maps/default-marker';
+import { haversine_distance } from '../utils';
 
 // Geolocalisation
 import { Geolocation } from '@capacitor/geolocation';
@@ -28,13 +31,12 @@ import { Geolocation } from '@capacitor/geolocation';
 })
 export class CreateawalkPage implements OnInit {
   positions: Array<{ lat: number; lng: number }> = [];
-  watchIds: any[] = [];
 
   distanceTraveled: number = 0;
   positionsPourDistance: Array<{ lat: number; lng: number }> = [];
 
-  heure: number | string;
-  minute: number | string;
+  hours: number | string;
+  minutes: number | string;
 
   map: Map | null = null;
   mapOptions: MapOptions;
@@ -50,14 +52,14 @@ export class CreateawalkPage implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor() {
+  constructor(private router: Router, private dataService: DataService) {
     // Prendre l'heure actuelle
-    this.heure = new Date().getHours();
+    this.hours = new Date().getHours();
     // Prendre les minutes actuelles
-    this.minute = new Date().getMinutes();
+    this.minutes = new Date().getMinutes();
 
-    this.heure = this.heure < 10 ? '0' + this.heure : this.heure;
-    this.minute = this.minute < 10 ? '0' + this.minute : this.minute;
+    this.hours = this.hours < 10 ? '0' + this.hours : this.hours;
+    this.minutes = this.minutes < 10 ? '0' + this.minutes : this.minutes;
 
     // this.getUserLocation();
 
@@ -89,34 +91,6 @@ export class CreateawalkPage implements OnInit {
     this.watchPosition();
   }
 
-  // La formule de Haversine permet de calculer la distance entre deux points sur une sphère, connaissant leurs coordonnées géographiques.
-  haversine_distance(mk1: any, mk2: any) {
-    // console.log('1');
-    let R = 6371.071; // Radius of the Earth in Kilometers
-    // console.log('2');
-    let rlat1 = mk1.lat * (Math.PI / 180); // Convert degrees to radians
-    // console.log('3');
-    let rlat2 = mk2.lat * (Math.PI / 180); // Convert degrees to radians
-    // console.log('4');
-    let difflat = rlat2 - rlat1; // Radian difference (latitudes)
-    // console.log('5');
-    let difflon = (mk2.lng - mk1.lng) * (Math.PI / 180); // Radian difference (longitudes)
-    // console.log('6');
-    let d =
-      2 *
-      R *
-      Math.asin(
-        Math.sqrt(
-          Math.pow(Math.sin(difflat / 2), 2) +
-            Math.cos(rlat1) *
-              Math.cos(rlat2) *
-              Math.pow(Math.sin(difflon / 2), 2)
-        )
-      );
-
-    return d * 1000; // Mètres
-  }
-
   watchPosition(): void {
     Geolocation.watchPosition({ enableHighAccuracy: true }, (position) => {
       console.log('watchPosition');
@@ -140,7 +114,7 @@ export class CreateawalkPage implements OnInit {
           this.distanceTraveled =
             (Math.round(
               this.distanceTraveled +
-                this.haversine_distance(
+                haversine_distance(
                   this.positionsPourDistance[
                     this.positionsPourDistance.length - 1
                   ],
@@ -172,27 +146,19 @@ export class CreateawalkPage implements OnInit {
         } else {
           // Lorsque la position change ajoute un marqueur
           // ce n'est pas pour autant que l'on ajoute la position dans le tableau pour stocker dans la BD
-          // Mais on stocke dans le tableau qui sert à calculer la distance parcourue
+          // Mais on a stocké dans le tableau qui sert à calculer la distance parcourue
           this.mapMarkers.push(
             marker([this.currentPosition.lat, this.currentPosition.lng], {
               icon: trackingIcon,
             }).bindTooltip(this.noPoint++ + ' from start position')
           );
 
-          /*
-          Partie calcul distance
-          */
-
-          /*
-          Fin partie calcul distance
-          */
-
           const lastPosition = this.positions[this.positions.length - 1];
 
           // Si la dernière position est à plus de 30 mètres de la position actuelle alors on l'ajoute dans le tableau
           if (
             lastPosition &&
-            this.haversine_distance(lastPosition, this.currentPosition) >= 30
+            haversine_distance(lastPosition, this.currentPosition) >= 30
           ) {
             this.positions.push(this.currentPosition);
             console.log('Position ajoutée car différence de minimum 30 mètres');
@@ -206,14 +172,16 @@ export class CreateawalkPage implements OnInit {
     console.log('centerMap');
     // Get the current position of the device
 
-    this.map?.setView(this.currentPosition, 14); // 13 est le niveau de zoom
+    this.map?.setView(this.currentPosition);
   }
 
-  stopWatching(): void {
-    console.log('stopWatching');
-    console.log("résumé de l'itinéraire");
-    console.log('Nombre de positions : ' + this.positions.length);
+  stopWatchingAndSendToNextPage() {
+    this.positions.push(this.currentPosition);
     console.log(this.positions);
-    this.watchIds.forEach((watchId) => Geolocation.clearWatch({ id: watchId }));
+    this.dataService.setData(this.positions);
+    this.dataService.setHours(this.hours);
+    this.dataService.setMinutes(this.minutes);
+    this.dataService.setDistance(this.distanceTraveled);
+    this.router.navigate(['/confirmawalk']);
   }
 }

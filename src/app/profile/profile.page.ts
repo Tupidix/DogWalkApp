@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/security/auth.service";
+import { FormsModule, NgForm } from "@angular/forms";
+import { NgIf } from '@angular/common';
 import {NgModel} from "@angular/forms";
 import {
   IonHeader,
@@ -37,9 +39,26 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
     IonLabel,
     IonInput,
     IonIcon,
+    FormsModule,
+    NgIf,
   ],
 })
+
 export class ProfilePage implements OnInit {
+  "firstname": string;
+  "lastname": string;
+  "email": string;
+  "password": string;
+  "birthdate": Date;
+  "displayInfo": string;
+
+  displayJSON(form: NgForm) {
+    if (form.valid) {
+    this.displayInfo = '{"firstname": "'+ this.firstname + '", "lastname": "' + this.lastname + '", "email": "' + this.email + '", "password": "' + this.password + '", "birthdate": "' + this.birthdate + '"}';
+    console.log(this.displayInfo);
+    }
+  }
+
   constructor(
     // Inject the authentication provider.
     private auth: AuthService,

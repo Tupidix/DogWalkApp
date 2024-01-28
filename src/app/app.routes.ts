@@ -118,4 +118,8 @@ export const routes: Routes = [
     redirectTo: '/maps',
     pathMatch: 'full',
   },
+  {
+    path: 'confirmawalk',
+    loadComponent: () => import('./confirmawalk/confirmawalk.page').then( m => m.ConfirmawalkPage)
+  },
 ];

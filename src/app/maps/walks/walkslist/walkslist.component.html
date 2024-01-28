@@ -1,3 +1,5 @@
+<div class="leaflet-map" leaflet [leafletOptions]="mapOptions" [leafletLayers]="mapMarkers"
+  (leafletMapReady)="onMapReady($event)"></div>
 <ion-content>
   <h1>Walks around you</h1>
   <ion-list>

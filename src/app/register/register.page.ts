@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule, NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 import {
   IonHeader,
   IonToolbar,
@@ -30,24 +32,27 @@ import { AuthService } from "src/app/security/auth.service";
     IonButton,
     IonInput,
     IonItem,
-    IonButtons
+    IonButtons,
+    FormsModule,
+    NgIf,
   ],
 })
 
-export class RegisterPage implements OnInit {
-  constructor(
-    // Inject the authentication provider.
-    private auth: AuthService,
-    // Inject the router
-    private router: Router
-  ) {}
+export class RegisterPage {
+"firstname": string;
+"lastname": string;
+"email": string;
+"password": string;
+"birthdate": Date;
+"displayInfo": string;
 
-  ngOnInit() {}
+constructor(){
+}
 
-  // Add a method to log out.
-  logOut() {
-    console.log("logging out...");
-    this.auth.logOut();
-    this.router.navigateByUrl("/login");
+  displayJSON(form: NgForm) {
+    if (form.valid) {
+    this.displayInfo = '{"firstname": "'+ this.firstname + '", "lastname": "' + this.lastname + '", "email": "' + this.email + '", "password": "' + this.password + '", "birthdate": "' + this.birthdate + '"}';
+    console.log(this.displayInfo);
+    }
   }
 }

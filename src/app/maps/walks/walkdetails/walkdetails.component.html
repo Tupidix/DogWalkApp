@@ -1,3 +1,6 @@
+<div class="leaflet-map" leaflet [leafletOptions]="mapOptions" [leafletLayers]="mapMarkers"
+  (leafletMapReady)="onMapReady($event)"></div>
+
 <ion-content>
   <h1>Walk details</h1>
   <ion-list>
@@ -11,7 +14,7 @@
       <ion-label>
         Length
       </ion-label>
-      <ion-note slot="end">XXX</ion-note>
+      <ion-note slot="end">{{distance}} m</ion-note>
     </ion-item>
     <ion-item>
       <ion-label>

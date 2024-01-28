@@ -12,20 +12,28 @@
   <ion-list>
     <ion-item>
       <ion-label>Departure time</ion-label>
-      <ion-note slot="end">{{hours}}h{{minutes}}</ion-note>
+      <ion-note slot="end">{{departureHours}}h{{departureMinutes}}</ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Distance traveled</ion-label>
       <ion-note slot="end">{{distanceTraveled}} m</ion-note>
     </ion-item>
-  </ion-list>
+    <ion-item>
+      <ion-label>Arrival time</ion-label>
+      <ion-note slot="end">{{hours}}h{{minutes}}</ion-note>
+    </ion-item>
 
-  <ion-button expand="block" (click)="centerMap()">Center View</ion-button>
+    <ion-item>
+      <ion-input [(ngModel)]="inputValue" label="Walk name" placeholder="Wonderful Walk"></ion-input>
+    </ion-item>
+  </ion-list>
 
   <ion-grid>
     <ion-row class="ion-align-items-center">
       <ion-col size="12" class="ion-text-center">
-        <ion-button color="danger" (click)="setOpen(true)">Stop recording</ion-button>
+        <ion-button [disabled]="inputValue.length <= 3 || inputValue.length >= 40" (click)="saveAndRedirect()">Save the
+          walk</ion-button>
+        <ion-button color="danger" class="center" (click)="setOpen(true)">Delete the walk</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -34,13 +42,13 @@
     <ng-template>
       <ion-content class="ion-padding">
         <p>
-          Are you sure you want to stop the recording of your route ?
+          Are you sure you want to delete your walk ?
         </p>
 
         <ion-grid>
           <ion-row class="ion-align-items-center">
             <ion-col size="12" class="ion-text-center">
-              <ion-button expand="block" (click)="setOpen(false)">Not sure</ion-button>
+              <ion-button expand="block" (click)="setOpen(false)">Oh no, my bad</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -48,12 +56,10 @@
         <ion-grid>
           <ion-row class="ion-align-items-center">
             <ion-col size="12" class="ion-text-center">
-              <ion-button color="danger" (click)="setOpen(false); stopWatchingAndSendToNextPage()">Yes, stop it
-              </ion-button>
+              <ion-button color="danger" href="../maps/walks" (click)="setOpen(false)">Goodbye walk !</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-content>
     </ng-template>
   </ion-modal>
-</ion-content>
