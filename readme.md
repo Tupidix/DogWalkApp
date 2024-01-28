@@ -47,19 +47,22 @@ $ ionic serve
 
 ### Register
 Notre app permet de créer un nouvel utilisateur.
+
 <img src="images/register.png" alt="My Image" width="200"/>
 
 ### Login
 De se connecter pour accéder à l'app. Cette page et la précédente sont les 2 seules pages pouvant être accédée sans être connectée.
+
 <img src="images/login.png" alt="My Image" width="200"/>
 
 ### Profil
 De voir ses propres informations et de les modifier ainsi que se déconnecter de l'application.
-![My Image](images/profile.png)
+
 <img src="images/profile.png" alt="My Image" width="200"/>
 
 ### Profil chien
 D'ajouter des chiens, de les modifier ainsi que de les supprimer.
+
 <img src="images/dogs.png" alt="My Image" width="200"/> <img src="images/add_dog.png" alt="My Image" width="200"/> <img src="images/update_dog.png" alt="My Image" width="200"/>
 
 ### Créer des balades
