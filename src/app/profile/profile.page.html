@@ -24,8 +24,8 @@
       First name is required
     </p>
 
-    <p *ngIf="firstnameInput.hasError('min-length') && firstnameInput.dirty || firstnameInput.hasError('max-length') && firstnameInput.dirty">
-      Your first name must be between 4 and 50 characters
+    <p *ngIf="firstnameInput.hasError('minlength') && firstnameInput.dirty || firstnameInput.hasError('maxlength') && firstnameInput.dirty">
+      Your first name must be between 3 and 50 characters
     </p>
 
     <!-- Champs lastname -->
@@ -35,8 +35,8 @@
       Last name is required
     </p>
 
-    <p *ngIf="lastnameInput.hasError('min-length') && lastnameInput.dirty || lastnameInput.hasError('max-length') && lastnameInput.dirty">
-      Your first name must be between 4 and 50 characters
+    <p *ngIf="lastnameInput.hasError('minlength') && lastnameInput.dirty || lastnameInput.hasError('maxlength') && lastnameInput.dirty">
+      Your first name must be between 3 and 50 characters
     </p>
 
     <!-- Champs email -->
@@ -44,6 +44,10 @@
     <!-- erreur email -->
     <p *ngIf="emailInput.hasError('required') && emailInput.dirty">
       Email is required
+    </p>
+    
+    <p *ngIf="emailInput.hasError('type') && emailInput.dirty">
+      You must type an email
     </p>
 
     <!-- Champs birthdate -->

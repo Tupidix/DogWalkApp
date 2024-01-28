@@ -31,7 +31,7 @@
       <!-- Champs lastname -->
       <ion-input label="Last name" type="text" name="lastname" [(ngModel)]="lastname" placeholder="Doe" minlength="3" maxlength="50" required #lastnameInput="ngModel"></ion-input>
       <!-- erreur lastname -->
-      <p *ngIf="lastnameInput.invalid && lastnameInput.dirty">
+      <p *ngIf="lastnameInput.hasError('required') && lastnameInput.dirty">
         Last name is required
       </p>
 
@@ -45,7 +45,7 @@
       <p *ngIf="emailInput.hasError('required') && emailInput.dirty">
         Email is required
       </p>
-      <p *ngIf="firstnameInput.hasError('type') && firstnameInput.dirty">
+      <p *ngIf="emailInput.hasError('type') && emailInput.dirty">
         You must type an email
       </p>
 

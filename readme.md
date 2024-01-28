@@ -23,3 +23,7 @@ This app was created by
 This app is based on the DogWalkAPI which can be found here:
 
 [DogWalkAPI](https://www.github.com/Tupidix/DogWalkAPI)
+
+# Installation
+To clone the app you will need to install Git, Node.js and Ionic.
+
