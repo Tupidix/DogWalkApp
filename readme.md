@@ -46,22 +46,26 @@ $ ionic serve
 ```
 
 ### Register
-Notre app permet de créer un nouvel utilisateur
+Notre app permet de créer un nouvel utilisateur.
+![My Image](images/register.png)
 
 ### Login
-De se connecter pour accéder à l'app
+De se connecter pour accéder à l'app. Cette page et la précédente sont les 2 seules pages pouvant être accédée sans être connectée.
+![My Image](images/login.png)
 
 ### Profil
-De voir ses propres informations et de les modifier ainsi que se déconnecter de l'application
+De voir ses propres informations et de les modifier ainsi que se déconnecter de l'application.
+![My Image](images/profile.png)
 
 ### Profil chien
-D'ajouter des chiens, de les modifier ainsi que de les supprimer
+D'ajouter des chiens, de les modifier ainsi que de les supprimer.
+![My Image](images/dogs.png) ![My Image](images/add_dog.png) ![My Image](images/update_dog.png)
 
 ### Créer des balades
 Il est possible de créer des balades qui seront enregistrée automatiquement lors de votre parcours.
 
 ### Voir les autres utilisateurs
-Visionner les utilisateurs proche de vous sur la carte
+Visionner les utilisateurs proche de vous sur la carte.
 
 ## Bugs et fonctionnalité non-implémentée
 Il est possible d'envoyer autre chose qu'un email dans register et update profile (le validator angular type="email" ne fonctionne pas).
