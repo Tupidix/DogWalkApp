@@ -117,14 +117,13 @@ export class WalkerslistComponent implements OnInit {
     // });
     this.auth.getId$().subscribe((id) => {
       this.auth.getAllUsers$().subscribe((users) => {
-        this.allUsers = users;
-
+        // this.allUsers = users;
         // if im in the list, remove me
-        this.allUsers.forEach((user, index) => {
-          if (user.id === id) {
-            this.allUsers.splice(index, 1);
-          }
-        });
+        // this.allUsers.forEach((user, index) => {
+        //   if (user.id === id) {
+        //     this.allUsers.splice(index, 1);
+        //   }
+        // });
       });
 
       Geolocation.getCurrentPosition().then((position) => {
@@ -140,6 +139,8 @@ export class WalkerslistComponent implements OnInit {
       this.auth.getAllUsers$().subscribe((users) => {
         users.forEach((user) => {
           if (user.localisation.coordinate[0] && user.id !== id) {
+            this.allUsers.push(user);
+
             this.mapMarkers.push(
               marker(
                 [
