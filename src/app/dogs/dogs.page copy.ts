@@ -26,32 +26,22 @@ export class DogsPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Récupération de tout les chiens
     this.auth.getAllDogs$().subscribe((dogs) => {
       this.allDogs = dogs;
-      this.allDogs.forEach((dog: any) => {
-        if (dog.master.includes(localStorage.getItem('id'))) {
-          this.yourDogs.push(dog);
-        }
-      });
+      console.log('this.allDogs');
+      console.log(this.allDogs);
+
+      setTimeout(() => {
+        this.allDogs.forEach((dog: any) => {
+          console.log('la je passe');
+          if (dog.master === '65a6848515ca4e1874b5de14') {
+            console.log(dog);
+            console.log('chien rajouté');
+            this.yourDogs.push(dog);
+          }
+        });
+      }, 5000);
     });
   }
 }
-
-//   ngOnInit() {
-//     let myID = this.auth.getMyID();
-//     this.auth.getAllDogs$().subscribe((dogs) => {
-//       this.allDogs = dogs;
-//       console.log('this.allDogs');
-//       console.log(this.allDogs);
-
-//       this.allDogs.forEach((dog: any) => {
-//         console.log('la je passe');
-//         console.log(myID);
-//         if (dog.master.includes(myID)) {
-//           console.log('chien rajouté');
-//           this.yourDogs.push(dog);
-//         }
-//       });
-//     });
-//   }
-// }

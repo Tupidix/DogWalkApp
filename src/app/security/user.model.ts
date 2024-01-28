@@ -1,4 +1,5 @@
 export type User = {
+  ownerId: string;
   id: string;
   firstname: string;
   lastname: string;

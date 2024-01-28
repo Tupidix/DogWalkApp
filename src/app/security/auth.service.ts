@@ -9,12 +9,13 @@ import { Storage } from '@ionic/storage-angular';
 import { switchMap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { isDefined } from '../utils';
 
 /***********************************************************/
 /*********!!! REPLACE BELOW WITH YOUR API URL !!! **********/
 /***********************************************************/
-// const API_URL = 'https://dogwalkapi.onrender.com';
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://dogwalkapi.onrender.com';
+// const API_URL = 'http://localhost:8100';
 
 /**
  * Authentication service for login/logout.
@@ -56,7 +57,14 @@ export class AuthService {
     return this.#auth$.pipe(map((auth) => auth?.token));
   }
 
-  getId$(): Observable<string | undefined> {
+  getId$(): Observable<string> {
+    return this.#auth$.pipe(
+      map((auth) => auth?.id),
+      filter(isDefined) // Add this line
+    );
+  }
+
+  getMyID(): any {
     return this.#auth$.pipe(map((auth) => auth?.id));
   }
 
@@ -142,8 +150,8 @@ export class AuthService {
   /*
   Get all users and give the token to the API to do that
   */
-  getAllDogs$(id: string): Observable<User[]> {
-    const authUrl = `${API_URL}/users/${id}`;
+  getAllDogs$(): Observable<User[]> {
+    const authUrl = `${API_URL}/dogs`;
 
     return this.getToken$().pipe(
       switchMap((token) => {
@@ -152,6 +160,20 @@ export class AuthService {
         });
 
         return this.http.get<User[]>(authUrl, { headers });
+      })
+    );
+  }
+
+  getDog$(id: string): Observable<User> {
+    const authUrl = `${API_URL}/dogs/${id}`;
+
+    return this.getToken$().pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+
+        return this.http.get<User>(authUrl, { headers });
       })
     );
   }
