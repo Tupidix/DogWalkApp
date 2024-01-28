@@ -109,9 +109,9 @@ export class WalkslistComponent implements OnInit {
       });
 
       // Temporaire, prendre les 5 premiers résultats
-      if (walks.length > 5) {
-        this.allWalks = this.allWalks.slice(0, 5);
-      }
+      // if (walks.length > 5) {
+      //   this.allWalks = this.allWalks.slice(0, 5);
+      // }
 
       // this.allWalks.forEach((walk) => {
       //   console.log(walk);

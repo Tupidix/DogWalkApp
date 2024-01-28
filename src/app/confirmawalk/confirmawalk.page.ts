@@ -139,7 +139,7 @@ export class ConfirmawalkPage implements OnInit {
           console.error(error);
         }
       );
-      this.router.navigate(['/walks']);
+      this.router.navigate(['/maps/walks']);
     });
   }
 }

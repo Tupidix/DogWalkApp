@@ -46,7 +46,7 @@ export const startIcon: Icon<IconOptions> = icon({
   // If not provided, the image center will be used, and that could be awkward
   iconAnchor: [10, 10],
   // The path to the image to display
-  iconUrl: 'https://ionic.io/ionicons/svg/md-paw.svg',
+  iconUrl: 'https://www.svgrepo.com/show/50205/dog-paw.svg',
   // The path to the image's shadow to display. Also a leaflet asset
   //   shadowUrl: 'leaflet/marker-shadow.png',
 });

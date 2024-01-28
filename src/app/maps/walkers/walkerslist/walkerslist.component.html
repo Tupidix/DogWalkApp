@@ -1,3 +1,5 @@
+<div class="leaflet-map" leaflet [leafletOptions]="mapOptions" [leafletLayers]="mapMarkers"
+  (leafletMapReady)="onMapReady($event)"></div>
 <ion-content>
   <h1>Walkers around you</h1>
   <ion-list>
@@ -5,8 +7,6 @@
       <ion-label>
         {{user.firstname}} {{user.lastname}}
       </ion-label>
-      <ion-note slot="end">Position inconnue</ion-note>
     </ion-item>
   </ion-list>
-
-</ion-content>
+  <p>{{info}}</p>

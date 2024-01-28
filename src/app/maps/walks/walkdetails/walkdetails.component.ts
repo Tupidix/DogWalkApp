@@ -13,6 +13,7 @@ import {
   MyLocationIcon,
   trackingIcon,
   arrivalIcon,
+  startIcon,
 } from '../../default-marker';
 
 @Component({
@@ -55,13 +56,31 @@ export class WalkdetailsComponent implements OnInit {
           lng: element.coordinate[1],
         });
 
+        // S'il s'agit du premier element fait ceci
+        if (element == this.walk.path[0]) {
+          this.mapMarkers.push(
+            marker([element.coordinate[0], element.coordinate[1]], {
+              icon: startIcon,
+            })
+          );
+        }
+
+        // Si c'est le dernier éléement fait cela
+        if (element == this.walk.path[this.walk.path.length - 1]) {
+          this.mapMarkers.push(
+            marker([element.coordinate[0], element.coordinate[1]], {
+              icon: arrivalIcon,
+            })
+          );
+        }
+
         this.mapMarkers.push(
           marker([element.coordinate[0], element.coordinate[1]], {
             icon: trackingIcon,
           })
         );
 
-        console.log(this.nouveauFormatCoordonnees);
+        // console.log(this.nouveauFormatCoordonnees);
 
         // Calcul de la distance
         if (this.nouveauFormatCoordonnees.length > 1) {
@@ -79,7 +98,7 @@ export class WalkdetailsComponent implements OnInit {
             ) /
               1000) *
             1000;
-          console.log(this.distance);
+          // console.log(this.distance);
         }
       });
 
@@ -114,5 +133,12 @@ export class WalkdetailsComponent implements OnInit {
     setTimeout(() => map.invalidateSize(), 100);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // Un peu bricolé mais ça marche
+    // En gros, on attend que la carte soit prête et on la recentre sur le début de la balade
+    setTimeout(
+      () => this.map?.setView(this.nouveauFormatCoordonnees[0], 14),
+      1000
+    );
+  }
 }
