@@ -10,9 +10,9 @@ This app is designed to walk your dogs with other dog owners in your area. You c
 
 This app is built with Angular and Ionic.
 
-# The DogWalk Team
+# La Team Dogwalk
 
-This app was created by
+Cette app a été créé par
 
 [Tupidix](https://www.github.com/Tupidix)
 
@@ -20,10 +20,19 @@ This app was created by
 
 [QuinteirosM](https://www.github.com/quinteirosm)
 
-This app is based on the DogWalkAPI which can be found here:
+L'app est basée sur DogWalkAPI qui peut être trouvée ici:
 
-[DogWalkAPI](https://www.github.com/Tupidix/DogWalkAPI)
+[DogWalkAPI Repo](https://www.github.com/Tupidix/DogWalkAPI)
+
+[DogWalkAPI OnRender](https://dogwalkapi.onrender.com)
+
+Avant de tester l'app, veuillez cliquer sur ce second lien et attendez jusqu'à voir le texte "Welcome to our API, please refer to the documentation to use it properly, go to /api-docs to see it". L'app est hostée sur OnRender Free et prend un petit moment à charger la première requête.
 
 # Installation
-To clone the app you will need to install Git, Node.js and Ionic.
+Pour cloner l'app vous aurez besoin d'installer Git, Node.js and Ionic.
+Puis d'effectuer ces commandes.
+
+´´´
+hello
+´´´
 
