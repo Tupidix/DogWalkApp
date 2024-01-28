@@ -78,9 +78,13 @@ Après avoir séléctionné une balade, la carte va automatiquement se déplacer
 <img src="images/maps_chemins.png" alt="My Image" width="200"/> <img src="images/maps_chemin.png" alt="My Image" width="200"/>
 
 ### Voir les autres utilisateurs
-Visionner les utilisateurs proche de vous sur la carte en tapant dessus vous pouvez voir de qui il s'agit. La personne connectée n'est pas affichée dans la liste de personnes en bas, seul les personnes avec une localisation enregistrée sont affichées dans la liste du bas. Les personnes se trouvant de multiples fois dans la liste sont des tests.
+Visionner les utilisateurs proche de vous sur la carte en tapant dessus vous pouvez voir de qui il s'agit. Seul les personnes avec une localisation enregistrée sont affichées dans la liste du bas. Les personnes se trouvant de multiples fois dans la liste sont des tests.
 
 <img src="images/walkers.png" alt="My Image" width="200"/>
 
+### Voir détail utilisateurs
+En pressant sur un utilisateur on peut voir des détails sur celui-ci ainsi que sa liste de chiens.
+<img src="images/profile_autre.png" alt="My Image" width="200"/>
+
 ## Bugs et fonctionnalité non-implémentée
-Il est possible d'envoyer autre chose qu'un email dans register et update profile (le validator angular type="email" ne fonctionne pas).
+Il est possible d'envoyer autre chose qu'un email dans register et update profile (le validator angular type="email" ne fonctionne pas). Les erreurs sont gérées mais non visible par l'utilisateur. API image non implémentée. Pas d'options de recherche ni de filtre.
