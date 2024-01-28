@@ -28,6 +28,7 @@ export class DogsPage implements OnInit {
   ngOnInit() {
     this.auth.getAllDogs$().subscribe((dogs) => {
       this.allDogs = dogs;
+      console.log(this.allDogs);
       this.allDogs.forEach((dog: any) => {
         if (dog.master.includes(localStorage.getItem('id'))) {
           this.yourDogs.push(dog);

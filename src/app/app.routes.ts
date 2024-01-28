@@ -91,7 +91,20 @@ export const routes: Routes = [
       {
         path: 'dogs',
         // Go to the dogs.page
-        loadComponent: () => import('./dogs/dogs.page').then((m) => m.DogsPage),
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('./dogs/dogs.page').then((m) => m.DogsPage),
+          },
+          {
+            path: ':dogId',
+            loadComponent: () =>
+              import('./dogs/dog-details/dog-details.component').then(
+                (m) => m.DogDetailsComponent
+              ),
+          },
+        ],
       },
       {
         path: '',

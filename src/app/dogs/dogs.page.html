@@ -15,12 +15,11 @@
       <ion-label>Your dogs</ion-label>
       <ion-icon id="topInfo" aria-hidden="true" name="pencil-outline" slot="end"></ion-icon>
     </ion-item>
-    <ion-item *ngFor="let dog of yourDogs" detail>
+    <ion-item *ngFor="let dog of yourDogs" href="./dogs/{{dog._id}}" detail>
       <ion-label>
         {{dog.name}}
       </ion-label>
     </ion-item>
-
   </ion-list>
   <!-- Logout button -->
   <ion-button>ADD A DOG</ion-button>
