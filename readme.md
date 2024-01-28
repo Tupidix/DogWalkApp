@@ -75,7 +75,7 @@ Il est possible de créer des balades qui seront enregistrées automatiquement l
 <img src="images/creer_chemin.png" alt="My Image" width="200"/>
 
 ### Voir les balades
-Après avoir séléctionné une balade, la carte va automatiquement se déplacer celle-ci et afficher sa distance réel, son point de départ et d'arrivée ainsi que son créateur.
+Après avoir séléctionné une balade, la carte va automatiquement se déplacer vers celle-ci et afficher sa distance réel, son point de départ et d'arrivée ainsi que son créateur.
 
 <img src="images/maps_chemins.png" alt="My Image" width="200"/> <img src="images/maps_chemin.png" alt="My Image" width="200"/>
 
