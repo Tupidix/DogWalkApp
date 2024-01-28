@@ -6,16 +6,22 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item>
-      <ion-item href="./dogs">
-        <ion-icon id="topInfo" aria-hidden="true" name="arrow-left" slot="start"></ion-icon>
-      </ion-item>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item href="./dogs">
+            <ion-icon id="topInfo" aria-hidden="true" name="arrow-back-outline" slot="start"></ion-icon>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item href="./dogs/update/{{dog._id}}">
+            <ion-icon id="topInfo" aria-hidden="true" name="pencil-outline" slot="end"></ion-icon>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <ion-item>
       <ion-label>{{dog.name}}</ion-label>
-      <ion-item href="./dogs/update/{{dog._id}}">
-        <ion-icon id="topInfo" aria-hidden="true" name="pencil-outline" slot="end"></ion-icon>
-      </ion-item>
     </ion-item>
     <ion-item>
       <ion-input label="Birthdate" type="text" placeholder="{{dog.birthdate}}" disabled="true"></ion-input>

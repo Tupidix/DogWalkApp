@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
-import {addIcons} from 'ionicons'
-import {navigateCircleOutline,  personOutline, pawOutline, arrowBackOutline, pencilOutline } from 'ionicons/icons'
-import { Storage } from "@ionic/storage-angular";
+import { addIcons } from 'ionicons';
+import {
+  navigateCircleOutline,
+  personOutline,
+  pawOutline,
+  arrowBackOutline,
+  pencilOutline,
+  paw,
+} from 'ionicons/icons';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +20,13 @@ import { Storage } from "@ionic/storage-angular";
 export class AppComponent {
   constructor(storage: Storage) {
     storage.create();
-    addIcons({navigateCircleOutline, personOutline, pawOutline, arrowBackOutline, pencilOutline})
+    addIcons({
+      navigateCircleOutline,
+      personOutline,
+      pawOutline,
+      arrowBackOutline,
+      pencilOutline,
+      paw,
+    });
   }
 }

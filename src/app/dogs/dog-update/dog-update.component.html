@@ -7,7 +7,7 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item href="./dogs/{{existingDog._id}}">
-      <ion-icon id="topInfo" aria-hidden="true" name="arrow-left" slot="start"></ion-icon>
+      <ion-icon id="topInfo" name="arrow-back-outline" slot="start"></ion-icon>
     </ion-item>
     <ion-item>
       <ion-input [(ngModel)]="dogName" label="Dog name" type="text" value="{{existingDog.name}}"></ion-input>

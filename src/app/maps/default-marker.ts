@@ -39,6 +39,18 @@ export const trackingIcon: Icon<IconOptions> = icon({
   //   shadowUrl: 'leaflet/marker-shadow.png',
 });
 
+export const startIcon: Icon<IconOptions> = icon({
+  // This define the displayed icon size, in pixel
+  iconSize: [20, 20],
+  // This defines the pixel that should be placed right above the location
+  // If not provided, the image center will be used, and that could be awkward
+  iconAnchor: [10, 10],
+  // The path to the image to display
+  iconUrl: 'https://ionic.io/ionicons/svg/md-paw.svg',
+  // The path to the image's shadow to display. Also a leaflet asset
+  //   shadowUrl: 'leaflet/marker-shadow.png',
+});
+
 export const arrivalIcon: Icon<IconOptions> = icon({
   // This define the displayed icon size, in pixel
   iconSize: [20, 20],
