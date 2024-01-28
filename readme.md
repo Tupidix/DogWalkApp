@@ -47,6 +47,8 @@ $ ionic serve
 
 Dans src/environments/environment.ts remplacer le contenu présent par le contenu que nous vous avons envoyé par mail.
 
+## Fonctionnalités
+
 ### Register
 Notre app permet de créer un nouvel utilisateur.
 
