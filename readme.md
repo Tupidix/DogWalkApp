@@ -2,13 +2,12 @@
 
 ## Description
 
-Welcome to our DogWalk App!
+Bienvenue sur l'App DogWalk !
 
-This app is a social network
-
-This app is designed to walk your dogs with other dog owners in your area. You can create a profile for your dog and yourself, and then you can create a walk and invite other dog owners to join you. You can also join other walks that have been created by other users.
+Cette app est un réseaux social créé pour promener votre chien avec d'autres possesseurs de chiens dans votre région. Vous pouvez créer un profil pour vous et votre chien et inviter les promeneurs à vous rejoindre. Vous pouvez également vous rejoindre sur des trajets créé par d'autres utilisateurs.
 
 This app is built with Angular and Ionic.
+Cette app a été conçue à l'aide d'Angular Ionic.
 
 # La Team Dogwalk
 
@@ -22,7 +21,7 @@ Cette app a été créé par
 
 L'app est basée sur DogWalkAPI qui peut être trouvée ici:
 
-[DogWalkAPI Repo](https://www.github.com/Tupidix/DogWalkAPI)
+[DogWalkAPI Repo git](https://www.github.com/Tupidix/DogWalkAPI)
 
 [DogWalkAPI OnRender](https://dogwalkapi.onrender.com)
 
@@ -46,3 +45,20 @@ $ npm i
 $ ionic serve
 ```
 
+### Register
+Notre app permet de créer un nouvel utilisateur
+
+### Login
+De se connecter pour accéder à l'app
+
+### Profil
+De voir ses propres informations et de les modifier ainsi que se déconnecter de l'application
+
+### Profil chien
+D'ajouter des chiens, de les modifier ainsi que de les supprimer
+
+### Créer des balades
+Il est possible de créer des balades qui seront enregistrée automatiquement lors de votre parcours.
+
+### Voir les autres utilisateurs
+Visionner les utilisateurs proche de vous sur la carte
