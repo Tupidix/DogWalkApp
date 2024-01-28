@@ -115,27 +115,17 @@ export class WalkerslistComponent implements OnInit {
     // this.auth.getToken$().subscribe((token) => {
     //   console.log('token: ' + token);
     // });
+    Geolocation.getCurrentPosition().then((position) => {
+      const userLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+
+      this.patchUserLocation(userLocation);
+    });
+
+    // Now if a user has a location, we can display it on the map
     this.auth.getId$().subscribe((id) => {
-      this.auth.getAllUsers$().subscribe((users) => {
-        // this.allUsers = users;
-        // if im in the list, remove me
-        // this.allUsers.forEach((user, index) => {
-        //   if (user.id === id) {
-        //     this.allUsers.splice(index, 1);
-        //   }
-        // });
-      });
-
-      Geolocation.getCurrentPosition().then((position) => {
-        const userLocation = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-
-        this.patchUserLocation(userLocation);
-      });
-
-      // Now if a user has a location, we can display it on the map
       this.auth.getAllUsers$().subscribe((users) => {
         users.forEach((user) => {
           if (user.localisation.coordinate[0] && user.id !== id) {
