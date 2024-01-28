@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: "https://dogwalkapi.onrender.com",
+  qimgUrl: "https://comem-qimg.onrender.com/api",
+  qimgSecret: "f0mFxxX+QnGPX6i+iLg8nB+v2wzcV9XMcbYpTmhEhcL3hwfYwjzAfDpqVdIeQJt9WzQjkV1F+Ke8ZPqDcfqIPwNrBl8DA44d+qEtSpX0OAuuxMeArCLjZWVOhZLcGtizrp0hzVbx7r869+nRPhZ+NzRy3iP3ZYX3gsxP6Zu05eE=",
 };
 
 /*
