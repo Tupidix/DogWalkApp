@@ -60,7 +60,9 @@ export class DogDetailsComponent implements OnInit {
           console.error(error);
         }
       );
-      this.router.navigate(['/dogs']);
+      this.router.navigate(['/dogs']).then(() => {
+        window.location.reload();
+      });
     });
   }
 }
