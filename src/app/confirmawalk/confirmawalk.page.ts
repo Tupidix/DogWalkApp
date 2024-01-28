@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/security/auth.service';
 
 // Carte
 import { latLng, MapOptions, tileLayer, Map, marker, Marker } from 'leaflet';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { defaultIcon, trackingIcon } from '../maps/default-marker';
+import { defaultIcon, trackingIcon, arrivalIcon } from '../maps/default-marker';
 
 @Component({
   selector: 'app-confirmawalk',
@@ -31,7 +33,11 @@ export class ConfirmawalkPage implements OnInit {
 
   inputValue: string = '';
 
-  constructor(private dataService: DataService) {
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private auth: AuthService
+  ) {
     this.mapOptions = {};
 
     this.mapMarkers = [
@@ -83,13 +89,57 @@ export class ConfirmawalkPage implements OnInit {
         }),
       ],
       zoom: 14, // Géré plus bas dans getUserLocation()
-      center: latLng(this.positions[0].lat, this.positions[0].lng), // Utile si la géolocalisation ne fonctionne pas
+      center: latLng(
+        this.positions[this.positions.length - 1].lat,
+        this.positions[this.positions.length - 1].lng
+      ), // Utile si la géolocalisation ne fonctionne pas
     };
 
     this.positions.forEach((position: any) => {
       this.mapMarkers.push(
         marker([position.lat, position.lng], { icon: trackingIcon })
       );
+    });
+
+    this.mapMarkers.push(
+      marker(
+        [
+          this.positions[this.positions.length - 1].lat,
+          this.positions[this.positions.length - 1].lng,
+        ],
+        { icon: arrivalIcon }
+      )
+    );
+  }
+
+  saveAndRedirect() {
+    this.auth.getId$().subscribe((userId) => {
+      // Collect the necessary data
+      const walkData = {
+        title: this.inputValue,
+        path: this.positions.map((position: any) => ({
+          type: 'Point',
+          coordinate: [position.lat, position.lng],
+        })),
+        creator: userId,
+      };
+
+      console.log('userID : ' + userId);
+
+      // Call the post method from the auth service
+      this.auth.postWalk$(walkData).subscribe(
+        (response) => {
+          // Handle the response here
+          console.log('La balade a été créée avec succès !');
+          console.log(response);
+        },
+        (error) => {
+          // Handle the error here
+          console.log("Aie aie aie, il y a eu une erreur :'(");
+          console.error(error);
+        }
+      );
+      this.router.navigate(['/walks']);
     });
   }
 }

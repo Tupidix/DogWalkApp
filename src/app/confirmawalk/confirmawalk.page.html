@@ -19,7 +19,7 @@
       <ion-note slot="end">{{distanceTraveled}} m</ion-note>
     </ion-item>
     <ion-item>
-      <ion-label>Departure time</ion-label>
+      <ion-label>Arrival time</ion-label>
       <ion-note slot="end">{{hours}}h{{minutes}}</ion-note>
     </ion-item>
 
@@ -28,11 +28,11 @@
     </ion-item>
   </ion-list>
 
-  <ion-button [disabled]="inputValue.length <= 1">Save the walk</ion-button>
-
   <ion-grid>
     <ion-row class="ion-align-items-center">
       <ion-col size="12" class="ion-text-center">
+        <ion-button [disabled]="inputValue.length <= 3 || inputValue.length >= 40" (click)="saveAndRedirect()">Save the
+          walk</ion-button>
         <ion-button color="danger" class="center" (click)="setOpen(true)">Delete the walk</ion-button>
       </ion-col>
     </ion-row>
@@ -56,7 +56,7 @@
         <ion-grid>
           <ion-row class="ion-align-items-center">
             <ion-col size="12" class="ion-text-center">
-              <ion-button color="danger" href="../maps/walks/walks" (click)="setOpen(false)">Goodbye walk !</ion-button>
+              <ion-button color="danger" href="../maps/walks" (click)="setOpen(false)">Goodbye walk !</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
