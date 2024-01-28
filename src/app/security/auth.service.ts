@@ -14,8 +14,8 @@ import { isDefined } from '../utils';
 /***********************************************************/
 /*********!!! REPLACE BELOW WITH YOUR API URL !!! **********/
 /***********************************************************/
-// const API_URL = 'https://dogwalkapi.onrender.com';
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://dogwalkapi.onrender.com';
+// const API_URL = 'http://localhost:3001';
 
 /**
  * Authentication service for login/logout.

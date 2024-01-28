@@ -16,15 +16,13 @@
     <ion-icon name="arrow-back-outline" id="back"></ion-icon>
   </a>
   <div id="contenuPage">
-  <ion-item>
-    <ion-input label="First name" type="text" placeholder="John"></ion-input>
-    <ion-input label="Last name" type="text" placeholder="Doe"></ion-input>
-    <ion-input label="Email" type="email" placeholder="johndoe@gmail.com"></ion-input>
-    <ion-input label="Password" type="password" placeholder="password"></ion-input>
-    <ion-input label="Birthdate" type="date"></ion-input>
-  </ion-item>
-  <div id="bouttons">
-  <ion-button>CREATE ACCOUNT</ion-button>
-  </div>
+    <form (submit)="displayGreeting()">
+    <ion-input label="First name" type="text" name="firstname" [(ngModel)]="firstname" placeholder="John" required></ion-input>
+    <ion-input label="Last name" type="text" name="lastname" [(ngModel)]="lastname" placeholder="Doe" required></ion-input>
+    <ion-input label="Email" type="email" name="email" [(ngModel)]="email" placeholder="johndoe@gmail.com" required></ion-input>
+    <ion-input label="Password" type="password" name="password" [(ngModel)]="password" placeholder="password" required></ion-input>
+    <ion-input label="Birthdate" type="date" name="birthdate" [(ngModel)]="birthdate" required></ion-input>
+    <ion-button type="submit">CREATE ACCOUNT</ion-button>
+    </form>
 </div>
 </ion-content>
