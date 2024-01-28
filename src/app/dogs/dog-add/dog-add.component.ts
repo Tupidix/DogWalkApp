@@ -52,6 +52,10 @@ export class DogAddComponent implements OnInit {
           // Handle the response here
           console.log('Le chien a été créée avec succès !');
           console.log(response);
+
+          this.router.navigate(['/dogs']).then(() => {
+            window.location.reload();
+          });
         },
         (error) => {
           // Handle the error here
@@ -59,9 +63,6 @@ export class DogAddComponent implements OnInit {
           console.error(error);
         }
       );
-      this.router.navigate(['/dogs']).then(() => {
-        window.location.reload();
-      });
     });
   }
 }
