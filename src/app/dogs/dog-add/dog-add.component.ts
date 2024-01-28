@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/security/auth.service';
 import { DataService } from 'src/app/data.service';
+import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'dog-add',
   templateUrl: './dog-add.component.html',
@@ -19,9 +21,9 @@ export class DogAddComponent implements OnInit {
   dogPicture: string = '';
   dogMaster: string = '';
   constructor(
-    private dataService: DataService,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private toastController: ToastController
   ) {}
 
   ngOnInit() {}
