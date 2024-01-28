@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 import {
   IonHeader,
   IonToolbar,
@@ -33,6 +34,7 @@ import { AuthService } from "src/app/security/auth.service";
     IonItem,
     IonButtons,
     FormsModule,
+    NgIf,
   ],
 })
 
@@ -44,8 +46,13 @@ export class RegisterPage {
 "birthdate": Date;
 "displayInfo": string;
 
-  displayGreeting() {
+constructor(){
+}
+
+  displayGreeting(form: NgForm) {
+    if (form.valid) {
     this.displayInfo = '{"firstname": "'+ this.firstname + '", "lastname": "' + this.lastname + '", "email": "' + this.email + '", "password": "' + this.password + '", "birthdate": "' + this.birthdate + '"}';
     console.log(this.displayInfo);
+    }
   }
 }
