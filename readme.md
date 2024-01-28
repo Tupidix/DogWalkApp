@@ -62,3 +62,6 @@ Il est possible de créer des balades qui seront enregistrée automatiquement lo
 
 ### Voir les autres utilisateurs
 Visionner les utilisateurs proche de vous sur la carte
+
+## Bugs et fonctionnalité non-implémentée
+Il est possible d'envoyer autre chose qu'un email dans register et update profile (le validator angular type="email" ne fonctionne pas).
