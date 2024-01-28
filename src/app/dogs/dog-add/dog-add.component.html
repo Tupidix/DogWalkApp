@@ -1,3 +1,28 @@
-<p>
-  dog-add works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Add a dog</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-item href="./dogs">
+        <ion-icon id="topInfo" aria-hidden="true" name="arrow-left" slot="start"></ion-icon>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Name" type="text" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Birthdate" type="date" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Breed" type="text" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Picture" type="text" placeholder=""></ion-input>
+    </ion-item>
+    <ion-button>ADD THIS DOG</ion-button>
+  </ion-list>
+</ion-content>

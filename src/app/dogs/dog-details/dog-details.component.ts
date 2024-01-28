@@ -18,10 +18,10 @@ export class DogDetailsComponent implements OnInit {
     // Récupération de l'URL
     let currentUrl = window.location.href;
 
-    // Récupération de l'id de la balade
+    // Récupération de l'id du chien
     let idDog: string = currentUrl.split('/').pop() || '';
 
-    // Récupération de la balade
+    // Récupération du chien
     this.auth.getDog$(idDog).subscribe((dog) => {
       this.dog = dog;
       let date = new Date(this.dog.birthdate);

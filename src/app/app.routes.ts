@@ -97,11 +97,28 @@ export const routes: Routes = [
             loadComponent: () =>
               import('./dogs/dogs.page').then((m) => m.DogsPage),
           },
+          // dog add route
+          {
+            path: 'add',
+            loadComponent: () =>
+              import('./dogs/dog-add/dog-add.component').then(
+                (m) => m.DogAddComponent
+              ),
+          },
+          // dog details route
           {
             path: ':dogId',
             loadComponent: () =>
               import('./dogs/dog-details/dog-details.component').then(
                 (m) => m.DogDetailsComponent
+              ),
+          },
+          // dog update route
+          {
+            path: 'update/:dogId',
+            loadComponent: () =>
+              import('./dogs/dog-update/dog-update.component').then(
+                (m) => m.DogUpdateComponent
               ),
           },
         ],
@@ -120,6 +137,9 @@ export const routes: Routes = [
   },
   {
     path: 'confirmawalk',
-    loadComponent: () => import('./confirmawalk/confirmawalk.page').then( m => m.ConfirmawalkPage)
+    loadComponent: () =>
+      import('./confirmawalk/confirmawalk.page').then(
+        (m) => m.ConfirmawalkPage
+      ),
   },
 ];

@@ -1,18 +1,31 @@
-<ion-list>
-  <ion-item>
-    <ion-label>{{dog.name}}</ion-label>
-    <ion-icon id="topInfo" aria-hidden="true" name="pencil-outline" slot="end"></ion-icon>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Birthdate" type="text" placeholder="{{dog.birthdate}}" disabled="true"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Breed" type="text" placeholder="{{dog.breed}}" disabled="true"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Picture" type="text" placeholder="{{dog.picture}}" disabled="true"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-icon id="topInfo" aria-hidden="true" name="trash-bin" slot="end"></ion-icon>
-  </ion-item>
-</ion-list>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{dog.name}} info's</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-item href="./dogs">
+        <ion-icon id="topInfo" aria-hidden="true" name="arrow-left" slot="start"></ion-icon>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{dog.name}}</ion-label>
+      <ion-item href="./dogs/update/{{dog._id}}">
+        <ion-icon id="topInfo" aria-hidden="true" name="pencil-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Birthdate" type="text" placeholder="{{dog.birthdate}}" disabled="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Breed" type="text" placeholder="{{dog.breed}}" disabled="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Picture" type="text" placeholder="{{dog.picture}}" disabled="true"></ion-input>
+    </ion-item>
+    <ion-button>DELETE THIS DOG</ion-button>
+  </ion-list>
+</ion-content>
