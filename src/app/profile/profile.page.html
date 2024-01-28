@@ -16,41 +16,38 @@
     <h1>Personal informations</h1>
     <ion-icon name="pencil-outline"></ion-icon>
   </div>
-  <form #registerForm="ngForm" (submit)="displayJSON(registerForm)">
+  <form #registerForm="ngForm" (submit)="onSubmit(registerForm)">
     <!-- Champs firstname -->
-    <ion-input label="First name" type="text" name="firstname" [(ngModel)]="firstname" placeholder="John" min-length="4" max-length="50" required #firstnameInput="ngModel"></ion-input>
+    <ion-input label="First name" type="text" name="firstname" [(ngModel)]="user.firstname" placeholder="John" min-length="3" max-length="50" required #firstnameInput="ngModel"></ion-input>
     <!-- erreur firstname -->
     <p *ngIf="firstnameInput.hasError('required') && firstnameInput.dirty">
       First name is required
     </p>
 
-    <p *ngIf="firstnameInput.hasError('min-length')&& firstnameInput.dirty">
+    <p *ngIf="firstnameInput.hasError('min-length') && firstnameInput.dirty || firstnameInput.hasError('max-length') && firstnameInput.dirty">
       Your first name must be between 4 and 50 characters
     </p>
 
     <!-- Champs lastname -->
-    <ion-input label="Last name" type="text" name="lastname" [(ngModel)]="lastname" placeholder="Doe" min-length="4" max-length="50" required #lastnameInput="ngModel"></ion-input>
+    <ion-input label="Last name" type="text" name="lastname" [(ngModel)]="user.lastname" placeholder="Doe" min-length="3" max-length="50" required #lastnameInput="ngModel"></ion-input>
     <!-- erreur lastname -->
-    <p *ngIf="lastnameInput.invalid && lastnameInput.dirty">
+    <p *ngIf="lastnameInput.hasError('required') && lastnameInput.dirty">
       Last name is required
     </p>
 
+    <p *ngIf="lastnameInput.hasError('min-length') && lastnameInput.dirty || lastnameInput.hasError('max-length') && lastnameInput.dirty">
+      Your first name must be between 4 and 50 characters
+    </p>
+
     <!-- Champs email -->
-    <ion-input label="Email" type="email" name="email" [(ngModel)]="email" placeholder="johndoe@gmail.com" required #emailInput="ngModel"></ion-input>
+    <ion-input label="Email" type="email" name="email" [(ngModel)]="user.email" placeholder="johndoe@gmail.com" required #emailInput="ngModel"></ion-input>
     <!-- erreur email -->
     <p *ngIf="emailInput.hasError('required') && emailInput.dirty">
       Email is required
     </p>
 
-    <!-- Champs password -->
-    <ion-input label="Password" type="password" name="password" [(ngModel)]="password" placeholder="password" required #passwordInput="ngModel"></ion-input>
-    <!-- erreur password -->
-    <p *ngIf="passwordInput.hasError('required') && passwordInput.dirty">
-      Password is required
-    </p>
-
     <!-- Champs birthdate -->
-    <ion-input label="Birthdate" type="date" name="birthdate" [(ngModel)]="birthdate" required #birthdateInput="ngModel"></ion-input>
+    <ion-input label="Birthdate" type="date" name="birthdate" [(ngModel)]="user.birthdate" required #birthdateInput="ngModel"></ion-input>
     <!-- erreur birthdate -->
     <p *ngIf="birthdateInput.hasError('required') && birthdateInput.dirty">
       Birthdate is required

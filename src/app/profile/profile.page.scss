@@ -7,3 +7,11 @@ ion-icon {
     width: 25px;
     height: 25px;
 }
+
+ion-input.ng-invalid.ng-dirty {
+    background-color: #ffc0c0;
+  }
+
+p{
+    color: red;
+}

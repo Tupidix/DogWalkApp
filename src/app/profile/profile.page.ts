@@ -45,17 +45,21 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
 })
 
 export class ProfilePage implements OnInit {
-  "firstname": string;
-  "lastname": string;
-  "email": string;
-  "password": string;
-  "birthdate": Date;
-  "displayInfo": string;
+  user: any={
+  id: "",
+  firstname:  "",
+  lastname: "",
+  email: "",
+  password: "",
+  birthdate: "",
+  }
 
-  displayJSON(form: NgForm) {
-    if (form.valid) {
-    this.displayInfo = '{"firstname": "'+ this.firstname + '", "lastname": "' + this.lastname + '", "email": "' + this.email + '", "password": "' + this.password + '", "birthdate": "' + this.birthdate + '"}';
-    console.log(this.displayInfo);
+  onSubmit(form: NgForm) {
+    console.log(this.user._id)
+     if (form.valid) {
+      this.auth.updateUser$(this.user).subscribe((user) => {
+        console.log(user);
+      });
     }
   }
 
@@ -64,7 +68,15 @@ export class ProfilePage implements OnInit {
     private auth: AuthService,
     // Inject the router
     private router: Router
-  ) {}
+  ) {
+    this.auth.getId$().subscribe((userId) => {
+      this.auth.getUser$(userId).subscribe((user) => {
+        this.user = user;
+        console.log(this.user);
+        this.user.birthdate = new Date(user.birthdate).toISOString().slice(0, 10);
+      });
+    });
+  }
 
   ngOnInit() {}
 

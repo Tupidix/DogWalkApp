@@ -31,7 +31,7 @@
   <ion-grid>
     <ion-row class="ion-align-items-center">
       <ion-col size="12" class="ion-text-center">
-        <ion-button [disabled]="inputValue.length <= 3 || inputValue.length >= 40" (click)="saveAndRedirect()">Save the
+        <ion-button [disabled]="inputValue.length < 3 || inputValue.length > 40" (click)="saveAndRedirect()">Save the
           walk</ion-button>
         <ion-button color="danger" class="center" (click)="setOpen(true)">Delete the walk</ion-button>
       </ion-col>
