@@ -89,4 +89,4 @@ En pressant sur un utilisateur on peut voir des détails sur celui-ci ainsi que 
 <img src="images/profile_autre.png" alt="My Image" width="200"/>
 
 ## Bugs et fonctionnalité non-implémentée
-Il est possible d'envoyer autre chose qu'un email dans register et update profile (le validator angular type="email" ne fonctionne pas). Les erreurs sont gérées mais non visible par l'utilisateur. API image non implémentée. Pas d'options de recherche ni de filtre. Join walk non-implémenté. Distance entre user et user non implémenter ni entre user et walk. Chien incompatible non implémenté.
+Il est possible d'envoyer autre chose qu'un email dans register et update profile (le validator angular type="email" ne fonctionne pas). Les erreurs sont gérées mais non visible par l'utilisateur. API image non implémentée. Pas d'options de recherche ni de filtre. Join walk non-implémenté. Distance entre user et user non implémenter ni entre user et walk. Chien incompatible non implémenté. Parfois quand on séléctionne une walk l'onglet walkers est séléctionné.
