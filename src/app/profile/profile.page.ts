@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { AuthService } from "src/app/security/auth.service";
-import { FormsModule, NgForm } from "@angular/forms";
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/security/auth.service';
+import { FormsModule, NgForm } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import {NgModel} from "@angular/forms";
+import { NgModel } from '@angular/forms';
 import {
   IonHeader,
   IonToolbar,
@@ -43,20 +43,19 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
     NgIf,
   ],
 })
-
 export class ProfilePage implements OnInit {
-  user: any={
-  id: "",
-  firstname:  "",
-  lastname: "",
-  email: "",
-  password: "",
-  birthdate: "",
-  }
+  user: any = {
+    id: '',
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    birthdate: '',
+  };
 
   onSubmit(form: NgForm) {
-    console.log(this.user._id)
-     if (form.valid) {
+    console.log(this.user._id);
+    if (form.valid) {
       this.auth.updateUser$(this.user).subscribe((user) => {
         console.log(user);
       });
@@ -73,7 +72,9 @@ export class ProfilePage implements OnInit {
       this.auth.getUser$(userId).subscribe((user) => {
         this.user = user;
         console.log(this.user);
-        this.user.birthdate = new Date(user.birthdate).toISOString().slice(0, 10);
+        this.user.birthdate = new Date(user.birthdate)
+          .toISOString()
+          .slice(0, 10);
       });
     });
   }
