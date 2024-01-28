@@ -41,7 +41,7 @@ export class DogsPage implements OnInit {
     });
   }
 )}
-
+}
 
 //   ngOnInit() {
 //     let myID = this.auth.getMyID();
