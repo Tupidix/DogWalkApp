@@ -57,6 +57,10 @@ export class AuthService {
     return this.#auth$.pipe(map((auth) => auth?.token));
   }
 
+  getUserAuth$(): Observable<User | undefined> {
+    return this.#auth$.pipe(map((auth) => auth?.user));
+  }
+
   getId$(): Observable<string> {
     return this.#auth$.pipe(
       map((auth) => auth?.id),
@@ -112,7 +116,8 @@ export class AuthService {
     }
   
     updateUser$(user: any): Observable<User> {
-      const authUrl = `${API_URL}/users/${user.id}`;
+      const authUrl = `${API_URL}/users/${user._id}`;
+      console.log(user._id);
   
       return this.getToken$().pipe(
         switchMap((token) => {
