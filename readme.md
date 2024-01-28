@@ -48,6 +48,7 @@ $ ionic serve
 ### Register
 Notre app permet de créer un nouvel utilisateur.
 ![My Image](images/register.png)
+<img src="images/register.png" alt="My Image" width="300"/>
 
 ### Login
 De se connecter pour accéder à l'app. Cette page et la précédente sont les 2 seules pages pouvant être accédée sans être connectée.
