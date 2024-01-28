@@ -90,10 +90,19 @@ D'ajouter des chiens, de les modifier ainsi que de les supprimer.
 <img src="images/dogs.png" alt="My Image" width="200"/> <img src="images/add_dog.png" alt="My Image" width="200"/> <img src="images/update_dog.png" alt="My Image" width="200"/>
 
 ### Créer des balades
-Il est possible de créer des balades qui seront enregistrée automatiquement lors de votre parcours.
+Il est possible de créer des balades qui seront enregistrées automatiquement lors de votre parcours.
+
+<img src="images/creer_chemin.png" alt="My Image" width="200"/>
+
+### Voir les balades
+Après avoir séléctionné une balade, la carte va automatiquement se déplacer celle-ci et afficher sa distance réel, son point de départ et d'arrivée ainsi que son créateur.
+
+<img src="images/maps_chemins.png" alt="My Image" width="200"/> <img src="images/maps_chemin.png" alt="My Image" width="200"/>
 
 ### Voir les autres utilisateurs
-Visionner les utilisateurs proche de vous sur la carte.
+Visionner les utilisateurs proche de vous sur la carte (la personne connectée n'est pas affichée dans la liste de personnes en bas).
+
+<img src="images/walkers.png" alt="My Image" width="200"/>
 
 ## Bugs et fonctionnalité non-implémentée
 Il est possible d'envoyer autre chose qu'un email dans register et update profile (le validator angular type="email" ne fonctionne pas).
