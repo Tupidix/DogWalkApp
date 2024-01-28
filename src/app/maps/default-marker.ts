@@ -25,7 +25,17 @@ export const MyLocationIcon: Icon<IconOptions> = icon({
   // The path to the image's shadow to display. Also a leaflet asset
   //   shadowUrl: 'leaflet/marker-shadow.png',
 });
-
+export const humanIcon: Icon<IconOptions> = icon({
+  // This define the displayed icon size, in pixel
+  iconSize: [20, 20],
+  // This defines the pixel that should be placed right above the location
+  // If not provided, the image center will be used, and that could be awkward
+  iconAnchor: [10, 10], // Centre de l'image est sur la position
+  // The path to the image to display
+  iconUrl: 'https://www.svgrepo.com/show/327465/person-circle.svg',
+  // The path to the image's shadow to display. Also a leaflet asset
+  //   shadowUrl: 'leaflet/marker-shadow.png',
+});
 export const trackingIcon: Icon<IconOptions> = icon({
   // This define the displayed icon size, in pixel
   iconSize: [10, 10],

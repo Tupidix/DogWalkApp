@@ -7,11 +7,7 @@ import { AuthService } from 'src/app/security/auth.service';
 // Carte
 import { latLng, MapOptions, tileLayer, Map, marker, Marker } from 'leaflet';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import {
-  defaultIcon,
-  MyLocationIcon,
-  trackingIcon,
-} from '../../default-marker';
+import { defaultIcon, MyLocationIcon, humanIcon } from '../../default-marker';
 
 // Geolocalisation
 import { Geolocation } from '@capacitor/geolocation';
@@ -119,17 +115,45 @@ export class WalkerslistComponent implements OnInit {
     // this.auth.getToken$().subscribe((token) => {
     //   console.log('token: ' + token);
     // });
-    this.auth.getAllUsers$().subscribe((users) => {
-      this.allUsers = users;
+    this.auth.getId$().subscribe((id) => {
+      this.auth.getAllUsers$().subscribe((users) => {
+        this.allUsers = users;
+
+        // if im in the list, remove me
+        this.allUsers.forEach((user, index) => {
+          if (user.id === id) {
+            this.allUsers.splice(index, 1);
+          }
+        });
+      });
+
+      Geolocation.getCurrentPosition().then((position) => {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+
+        this.patchUserLocation(userLocation);
+      });
+
+      // Now if a user has a location, we can display it on the map
+      this.auth.getAllUsers$().subscribe((users) => {
+        users.forEach((user) => {
+          if (user.localisation.coordinate[0] && user.id !== id) {
+            this.mapMarkers.push(
+              marker(
+                [
+                  user.localisation.coordinate[0],
+                  user.localisation.coordinate[1],
+                ],
+                {
+                  icon: humanIcon,
+                }
+              ).bindTooltip(user.firstname + ' ' + user.lastname)
+            );
+          }
+        });
+      });
     });
-
-    // Geolocation.getCurrentPosition().then((position) => {
-    //   const userLocation = {
-    //     lat: position.coords.latitude,
-    //     lng: position.coords.longitude,
-    //   };
-
-    //   this.patchUserLocation(userLocation);
-    // });
   }
 }

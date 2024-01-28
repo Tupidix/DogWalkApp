@@ -10,4 +10,8 @@ export type User = {
   isAdmin: boolean;
   createdAt: string;
   updatedAt: string;
+  localisation: {
+    type: string;
+    coordinate: number[];
+  };
 };
