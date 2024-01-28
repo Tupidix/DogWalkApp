@@ -32,7 +32,17 @@ Avant de tester l'app, veuillez cliquer sur ce second lien et attendez jusqu'à 
 Pour cloner l'app vous aurez besoin d'installer Git, Node.js and Ionic.
 Puis d'effectuer ces commandes.
 
-´´´
-hello
-´´´
+```
+# Cloner le repo
+$ git clone https://github.com/Tupidix/DogWalkApp.git
+
+# Aller dans le répertoire
+$ cd DogWalkApp
+
+# Installez les dépendances
+$ npm i
+
+# Lancer le projet
+$ ionic serve
+```
 
