@@ -17,6 +17,7 @@ import { checkIfDogIsYours, isDefined } from '../utils';
 export class DogsPage implements OnInit {
   allDogs: any = [];
   yourDogs: any = [];
+  myId: string = '';
 
   constructor(
     // Inject the authentication provider.
@@ -26,17 +27,21 @@ export class DogsPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.auth.getId$().subscribe((id) => {
+      this.myId = id;
+    
     this.auth.getAllDogs$().subscribe((dogs) => {
       this.allDogs = dogs;
       console.log(this.allDogs);
       this.allDogs.forEach((dog: any) => {
-        if (dog.master.includes(localStorage.getItem('id'))) {
+        if (dog.master.includes(this.myId)) {
           this.yourDogs.push(dog);
         }
       });
     });
   }
-}
+)}
+
 
 //   ngOnInit() {
 //     let myID = this.auth.getMyID();

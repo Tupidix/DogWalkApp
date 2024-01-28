@@ -40,7 +40,7 @@ export class DogAddComponent implements OnInit {
         name: this.dogName,
         birthdate: this.dogBirthdate,
         breed: this.dogBreed,
-        master: localStorage.getItem('id'),
+        master: userId,
         picture: this.dogPicture,
       };
 
